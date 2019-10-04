@@ -27,8 +27,8 @@
             <input type="submit" value="Поиск" id="search" style="width: 10%;">       <!-- Я не знаю, почему так, но если прописать ширину в .css-файле, то оно не работает... -->
         </form>
 
-        <a href="" id="create_client">Создать клиента</a>
-        <a href="" id="all_clients">Все клиенты</a>
+        <a href="./createClient.php" id="create_client">Создать клиента</a>
+        <a href="./allClients.php" id="all_clients">Все клиенты</a>
     </div>
 </body>
 </html>
