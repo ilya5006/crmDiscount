@@ -34,7 +34,7 @@
 
     <hr>
 
-    <form id="accrual_of_bonuses" action="./accrualOfBonuses.php" method="GET">
+    <form id="accrual_of_bonuses" action="./php/accrualOfBonuses.php" method="GET">
         <input type="text" placeholder="Сумма заказа в рублях" name="sum">
         <input type="submit" value="Начисление бонусов">
     </form>
