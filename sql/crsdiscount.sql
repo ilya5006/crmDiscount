@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 04 2019 г., 17:55
+-- Время создания: Окт 05 2019 г., 22:58
 -- Версия сервера: 8.0.15
 -- Версия PHP: 7.3.2
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `authorization` (
   `login` varchar(15) NOT NULL,
   `password` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
 -- Дамп данных таблицы `authorization`
@@ -58,8 +58,26 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`id_client`, `fio`, `bonuses`, `next_writeoff_date`) VALUES
-(1, 'Иванов Иван Иванович', 50, '2019-10-05'),
-(2, 'Попов Александр Дмитриевич', 80, '2019-10-23');
+(1, 'Иванов Иван Иванович', 650, '2019-12-30'),
+(2, 'Попов Александр Дмитриевич', 0, '2020-01-23'),
+(8, 'Манисов Александр Ильич', 0, '2020-01-05');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `last_writeoff_date`
+--
+
+CREATE TABLE `last_writeoff_date` (
+  `last_writeoff_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `last_writeoff_date`
+--
+
+INSERT INTO `last_writeoff_date` (`last_writeoff_date`) VALUES
+('2019-12-25');
 
 --
 -- Индексы сохранённых таблиц
@@ -79,7 +97,7 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT для таблицы `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
