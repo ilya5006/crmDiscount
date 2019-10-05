@@ -39,6 +39,7 @@ a
 	text-decoration: none;
 }
 
+
 form:not(#search, #info)
 {
 	width: 650px;
@@ -160,10 +161,11 @@ header h1, h1
 	color: rgb(255, 255, 255);
 }
 
-#auth, #info, #bonus_payment, #accrual_of_bonuses, #create_client
+#auth, #info, #bonus_payment, #accrual_of_bonuses, #create_client, #bonus_payment
 {
 	width: 650px;
 }
+
 @media screen and (max-width: 800px)
 {
 	.wrapper
@@ -184,8 +186,13 @@ header h1, h1
 	{
 		margin-top: unset;
 	}
-	#auth, #info, #bonus_payment, #accrual_of_bonuses, #create_client
+	#auth, #info, #bonus_payment, #accrual_of_bonuses, #create_client, #bonus_payment
 	{
+		width: 100%;
+	}
+	#info p span
+	{
+		display: block;
 		width: 100%;
 	}
 	form, #info
