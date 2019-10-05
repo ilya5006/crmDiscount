@@ -29,7 +29,7 @@
 
     <form id="bonus_payment" action="./bonusPayment.php" method="GET">
         <input type="text" placeholder="Сумма заказа в рублях" name="sum">
-        <input type="submit" value="Оплатить чать суммы бонусами">
+        <input type="submit" value="Оплатить часть суммы бонусами">
     </form>
 
     <hr>

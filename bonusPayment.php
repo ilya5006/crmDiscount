@@ -26,7 +26,7 @@
     <p> Полная стоимость заказа: <span id="total_price"><?php echo $sum ?></span> </p>
     <p> Количество бонусов у клиента: <span id="client_bonuses"><?php echo $clientBonuses; ?></span></p>
 
-    <form style="margin-top: 100px;">
+    <form style="margin-top: 100px;" action="./php/bonusPayment.php" method="GET">
         Введите кол-во бонусов <br>
         <input id="bonuses_quantity" type="text" placeholder="Введите кол-во бонусов" name="sumBonusesPayment" value="<?php echo $maximumBonusesToPayment ?>">
         <input type="submit" value="Оплата бонусами">
