@@ -45,7 +45,7 @@ form:not(#search, #info)
 	width: 650px;
 }
 
-form, .wrapper, #info
+form, .wrapper, #info, #input-search-all-client
 {
 	display: flex;
 	align-items: center;
@@ -57,6 +57,74 @@ form, .wrapper, #info
 
 	background-color: #FFFFFF;
 	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.client
+{
+	display: flex;
+	flex-flow: row wrap;
+	border: 3px solid transparent;
+	margin-bottom: 15px;
+	padding: 15px 35px;
+	align-items: center;
+	background-color: #FFFFFF;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	transition: 0.3s all;
+}
+
+.client:hover
+{
+	background-color: rgb(250, 250, 250);
+	border: 3px solid rgb(230, 78, 98);
+}
+
+.client__id, .client__fio, .class__bonuses
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.client__id
+{
+	height: 100%;
+	font-size: 26px;
+
+	width: 5%;
+}
+
+.client__fio
+{	
+	align-content: center;
+	width: 80%;
+	height: 100%;
+	justify-content: flex-start;
+	font-size: 23px;
+	flex-grow: 1;
+	padding-left: 25px;
+}
+
+.class__bonuses
+{padding-left: 25px;
+	width: 5%;
+	height: 100%;
+	font-size: 26px;
+	text-align: right;
+}
+
+#user_list
+{
+	width: 100%;
+	padding: 25px 55px;
+}
+
+#input-search-all-client
+{
+	position: sticky;
+	top: 0;
+
+	width: 100%;
+	padding: 20px 30px;
 }
 
 #main
@@ -184,7 +252,7 @@ header h1, h1
 {
 	header h1, h1
 	{
-		margin-top: unset;
+		margin-top: 0px;
 	}
 	#auth, #info, #bonus_payment, #accrual_of_bonuses, #create_client, #bonus_payment
 	{
@@ -193,6 +261,7 @@ header h1, h1
 	#info p span
 	{
 		display: block;
+
 		width: 100%;
 	}
 	form, #info
@@ -209,12 +278,25 @@ header h1, h1
 	{
 		font-size: 10vw;
 	}
-	#main
+	#main, #user_list
 	{
-		padding: unset;
+		padding: 0px;
 	}
 	#info p
 	{
+		text-align: center;
+	}
+	.client
+	{
+		margin-bottom: 5px;
+	}
+	#input-search-all-client
+	{
+		text-align: center;
+	}
+	.client__fio
+	{
+		justify-content: center;
 		text-align: center;
 	}
 }
@@ -228,6 +310,10 @@ header h1, h1
 	#bonus_payment input, #accrual_of_bonuses input, #create_client input
 	{
 		font-size: 5vw;
+	}
+	.client__fio
+	{
+		font-size: 19px;
 	}
 }
 
