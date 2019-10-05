@@ -10,6 +10,7 @@
 html, body, #main
 {
 	width: 100%;
+	min-width: 320px;
 	min-height: 100vh;
 }
 
@@ -25,7 +26,7 @@ body
 	align-items: center;
 	flex-flow: column nowrap;
 	justify-content: center;
-	min-width: 320px;
+
 	background-color: #330000;
 	background-image: url("./../img/background.svg");
 	background-attachment: fixed;
@@ -38,19 +39,21 @@ a
 	text-decoration: none;
 }
 
-form:not(#search)
+form:not(#search, #info)
 {
 	width: 650px;
 }
 
-form, .wrapper
+form, .wrapper, #info
 {
 	display: flex;
 	align-items: center;
 	flex-flow: column nowrap;
 	justify-content: center;
-	padding: 65px 65px;
-	
+
+	margin-bottom: 25px;
+	padding: 65px 70px;
+
 	background-color: #FFFFFF;
 	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
@@ -58,6 +61,20 @@ form, .wrapper
 #main
 {
 	padding: 25px 55px;
+}
+
+#info p
+{
+	width: 100%;
+	padding: 0px 5px;
+}
+
+hr
+{
+	width: 100%;
+	margin: 15px 0px;
+
+	opacity: 0.8;
 }
 
 .wrapper
@@ -135,13 +152,18 @@ input[type="submit"]:focus, .wrapper a:focus
 
 header h1, h1
 {
-	padding: 45px 15px;
 	margin-top: 45px;
+	padding: 45px 65px;
+
 	text-align: center;
 
 	color: rgb(255, 255, 255);
 }
 
+#auth, #info, #bonus_payment, #accrual_of_bonuses, #create_client
+{
+	width: 650px;
+}
 @media screen and (max-width: 800px)
 {
 	.wrapper
@@ -158,23 +180,47 @@ header h1, h1
 
 @media screen and (max-width: 700px)
 {
-	form
+	header h1, h1
+	{
+		margin-top: unset;
+	}
+	#auth, #info, #bonus_payment, #accrual_of_bonuses, #create_client
 	{
 		width: 100%;
-		padding: 75px 6%;
+	}
+	form, #info
+	{
+		width: 100%;
+		padding: 45px 6%;
 	}
 	.wrapper
 	{
 		width: 100%;
 		padding: 25px 7%;
 	}
-	header h1
+	header h1, h1
 	{
 		font-size: 10vw;
 	}
 	#main
 	{
 		padding: unset;
+	}
+	#info p
+	{
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 475px)
+{
+	#info p
+	{
+		font-size: 5vw;
+	}
+	#bonus_payment input, #accrual_of_bonuses input, #create_client input
+	{
+		font-size: 5vw;
 	}
 }
 
@@ -187,7 +233,7 @@ header h1, h1
 	form
 	{
 		width: 100%;
-		padding: 75px 3%;
+		padding: 25px 3%;
 	}
 	.wrapper
 	{
@@ -195,55 +241,3 @@ header h1, h1
 		padding: 15px 4%;
 	}
 }
-
-/* 
-a
-{
-	font-size: 50px;
-
-	display: block;
-
-	padding: 80px 0px;
-
-	transition: 0.3s;
-	text-align: center;
-	text-decoration: none;
-
-	border-bottom: 1px solid black;
-}
-
-a:hover
-{
-	transition: 0.3s;
-
-	background-color: #C9BABA;
-}
-
-header
-{
-	display: flex;
-	align-items: center;
-	flex-direction: row;
-	justify-content: center;
-
-	padding: 5px 0px;
-
-	background-color: #C9BABA;
-}
-
-form
-{
-	display: flex;
-	flex-direction: row;
-
-	width: 100%;
-	height: 50px;
-}
-
-#id_client
-{
-	font-size: 20px;
-
-	width: 90%;
-	padding: 0px 5px;
-} */
