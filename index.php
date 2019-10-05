@@ -5,6 +5,18 @@
     {
         header("Location: auth.html");
     }
+
+    require_once "./php/db.php";
+
+    function writeOffBonuses()
+    {
+        $date = date_create();
+        $date = date_format($date, 'Y-m-d');
+
+        Database::query("UPDATE clients SET bonuses = 0 WHERE next_writeoff_date = '$date'");
+    }
+
+    writeOffBonuses();
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +34,7 @@
     </header>
     
     <div id="main">
-        <form id="search" action="" method="GET">
+        <form id="search" action="./php/findClient.php" method="GET">
             <input type="text" placeholder="Введите id клиента" name="id_client" id="id_client">
             <input type="submit" value="Поиск" id="search" style="width: 10%;">       <!-- Я не знаю, почему так, но если прописать ширину в .css-файле, то оно не работает... -->
         </form>
