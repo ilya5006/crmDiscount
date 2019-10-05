@@ -25,7 +25,7 @@ body
 	align-items: center;
 	flex-flow: column nowrap;
 	justify-content: center;
-
+	min-width: 320px;
 	background-color: #330000;
 	background-image: url("./../img/background.svg");
 	background-attachment: fixed;
@@ -33,20 +33,46 @@ body
 	background-size: cover;
 }
 
-form
+a
+{
+	text-decoration: none;
+}
+
+form:not(#search)
+{
+	width: 650px;
+}
+
+form, .wrapper
 {
 	display: flex;
 	align-items: center;
 	flex-flow: column nowrap;
 	justify-content: center;
-
 	padding: 65px 65px;
-
+	
 	background-color: #FFFFFF;
 	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
-form input
+#main
+{
+	padding: 25px 55px;
+}
+
+.wrapper
+{
+	margin-top: 50px;
+}
+
+.wrapper
+{
+	flex-flow: row nowrap;
+
+	padding: 5px 50px;
+}
+
+form input, .wrapper a
 {
 	width: 100%;
 	margin: 15px 0px;
@@ -82,7 +108,7 @@ input[type="text"]:focus, input[type="password"]:focus
 	border: 3px solid rgb(166, 37, 73);
 }
 
-input[type="submit"]
+input[type="submit"], .wrapper a
 {
 	cursor: pointer;
 
@@ -90,14 +116,44 @@ input[type="submit"]
 	background-color: rgb(230, 78, 98);
 }
 
-input[type="submit"]:hover
+.wrapper a
+{
+	flex-grow: 1;
+
+	margin: 25px 15px;
+}
+
+input[type="submit"]:hover, .wrapper a:hover
 {
 	background-color: rgb(180, 40, 80);
 }
 
-input[type="submit"]:focus
+input[type="submit"]:focus, .wrapper a:focus
 {
 	background-color: rgb(146, 39, 53);;
+}
+
+header h1, h1
+{
+	padding: 45px 15px;
+	margin-top: 45px;
+	text-align: center;
+
+	color: rgb(255, 255, 255);
+}
+
+@media screen and (max-width: 800px)
+{
+	.wrapper
+	{
+		flex-flow: column wrap;
+
+		padding: 5px 65px;
+	}
+	.wrapper a
+	{
+		margin: 25px 0px;
+	}
 }
 
 @media screen and (max-width: 700px)
@@ -107,15 +163,39 @@ input[type="submit"]:focus
 		width: 100%;
 		padding: 75px 6%;
 	}
+	.wrapper
+	{
+		width: 100%;
+		padding: 25px 7%;
+	}
+	header h1
+	{
+		font-size: 10vw;
+	}
+	#main
+	{
+		padding: unset;
+	}
 }
 
 @media screen and (max-width: 420px)
 {
+	input
+	{
+		font-size: 8vw;
+	}
 	form
 	{
+		width: 100%;
 		padding: 75px 3%;
 	}
+	.wrapper
+	{
+		width: 100%;
+		padding: 15px 4%;
+	}
 }
+
 /* 
 a
 {
