@@ -51,15 +51,15 @@
 
             if (document.querySelector("#input-search-all-client").value != '') 
             {
-                users.forEach(function (element) 
+                users.forEach(function(element) 
                 {
-                string = element[1];
-                re = '[*/' + document.querySelector("#input-search-all-client").value + '/*]';
+                    string = element[1];
+                    re = '[*/' + document.querySelector("#input-search-all-client").value + '/*]';
 
-                if (string.search(re) == 0) 
-                {
-                    usersSearch.push([element[0], element[1], element[2]]);
-                }
+                    if (string.search(re) == 0) 
+                    {
+                        usersSearch.push([element[0], element[1], element[2]]);
+                    }
                 });
                 showSearch();
             } 
@@ -71,11 +71,11 @@
 
         function showAll() 
         {
-        document.querySelector(".users").innerHTML = "";
-        users.forEach(function (data) 
-        {
-            info = "<div class=\"client\">\n<p class=\"client__id\"> ".concat(data[0], " </p>\n<p class=\"client__fio\"> ").concat(data[1], " </p>\n<p class=\"class__bonuses\"> ").concat(data[2], " </p>\n</div>");
-            document.querySelector(".users").innerHTML += info;
+            document.querySelector(".users").innerHTML = "";
+            users.forEach(function(data) 
+            {
+                info = "<div class=\"client\">\n<p class=\"client__id\"> ".concat(data[0], " </p>\n<p class=\"client__fio\"> ").concat(data[1], " </p>\n<p class=\"class__bonuses\"> ").concat(data[2], " </p>\n</div>");
+                document.querySelector(".users").innerHTML += info;
         });
         }
 
