@@ -28,8 +28,10 @@
 
 <div id="info">
 <?
+    $lastId = Database::query("SELECT id_client FROM clients ORDER BY id_client DESC")['id_client'];
+    $lastId++;
+    echo "<p> <strong> ID клиента - $lastId </strong> </p>";
     Database::queryExecute("INSERT INTO clients VALUES (NULL, '$fio', '$bonuses', '$nextWriteoffDate')");
-
     echo '<p> <strong> Количество бонусов, которое было изначально зачислено: </strong> <br>' . $bonuses . '</p>';
     echo '<p> <strong> Вы будете перенаправлены на главную страницу через: </strong> <br> <span id="timeout">5</span></p>';
 ?>
