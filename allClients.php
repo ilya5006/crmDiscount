@@ -81,11 +81,12 @@
 
         function showSearch() 
         {
-        document.querySelector(".users").innerHTML = "";
-        usersSearch.forEach(function (data) {
-            info = "<div class=\"client\">\n<p class=\"client__id\"> ".concat(data[0], " </p>\n<p class=\"client__fio\"> ").concat(data[1], " </p>\n<p class=\"class__bonuses\"> ").concat(data[2], " </p>\n</div>");
-            document.querySelector(".users").innerHTML += info;
-        });
+            document.querySelector(".users").innerHTML = "";
+            usersSearch.forEach(function (data) 
+            {
+                info = "<div class=\"client\">\n<p class=\"client__id\"> ".concat(data[0], " </p>\n<p class=\"client__fio\"> ").concat(data[1], " </p>\n<p class=\"class__bonuses\"> ").concat(data[2], " </p>\n</div>");
+                document.querySelector(".users").innerHTML += info;
+            });
         }
 
         showAll();
