@@ -36,17 +36,17 @@
 </div>
 
 <script>
-    let timeout = document.querySelector('#timeout');
-    let timer = parseInt(timeout.textContent);
-    let currentValue = timer;
+    var timeout = document.querySelector('#timeout');
+    var timer = parseInt(timeout.textContent);
+    var currentValue = timer;
 
-    setInterval(() =>
+    setInterval(function () 
     {
         currentValue--;
         timeout.textContent = currentValue;
     }, 1000);
 
-    setTimeout(() =>
+    setTimeout(function () 
     {
         location.href = '../index.php';
     }, 5000);
