@@ -19,14 +19,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Оплата бонусами</title>
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
-    <p> Максимальная сумма оплаты бонусами: <span id="maximum_bonuses"><?php echo $maximumBonusesToPayment; ?></span> </p>   
-    <p> Оставшаяся сумма заказа в рублях: <span id="remaining_sum"><?php echo $remainingSum ?> </span></p>
-    <p> Полная стоимость заказа: <span id="total_price"><?php echo $sum ?></span> </p>
-    <p> Количество бонусов у клиента: <span id="client_bonuses"><?php echo $clientBonuses; ?></span></p>
 
-    <form style="margin-top: 100px;" action="./php/bonusPayment.php" method="GET">
+    <div id="info">
+        <p> <strong>Максимальная сумма оплаты бонусами:</strong> <span id="maximum_bonuses"><?php echo $maximumBonusesToPayment; ?></span> </p>   
+        <p> <strong>Оставшаяся сумма заказа в рублях:</strong> <span id="remaining_sum"><?php echo $remainingSum ?> </span></p>
+        <p> <strong>Полная стоимость заказа:</strong> <span id="total_price"><?php echo $sum ?></span> </p>
+        <p> <strong>Количество бонусов у клиента:</strong> <span id="client_bonuses"><?php echo $clientBonuses; ?></span></p>
+    </div>
+
+    <form action="./php/bonusPayment.php" method="GET" id="bonus_payment">
         Введите кол-во бонусов <br>
         <input id="bonuses_quantity" type="text" placeholder="Введите кол-во бонусов" name="sumBonusesPayment" value="<?php echo $maximumBonusesToPayment ?>">
         <input type="submit" value="Оплата бонусами">

@@ -21,11 +21,19 @@
     $bonuses = floor($amountEntered / 500) * 10;
     $nextWriteoffDate = calculateNextWriteoffDate();
 
+?>
+<head>
+    <link rel="stylesheet" href="./../css/index.css">
+</head>
+
+<div id="info">
+<?
     Database::queryExecute("INSERT INTO clients VALUES (NULL, '$fio', '$bonuses', '$nextWriteoffDate')");
 
-    echo '<p> Количество бонусов, которое было изначально зачислено: ' . $bonuses . '</p>';
-    echo '<p> Вы будете перенаправлены на главную страницу через: <span id="timeout">5</span></p>';
+    echo '<p> <strong> Количество бонусов, которое было изначально зачислено: </strong> <br>' . $bonuses . '</p>';
+    echo '<p> <strong> Вы будете перенаправлены на главную страницу через: </strong> <br> <span id="timeout">5</span></p>';
 ?>
+</div>
 
 <script>
     let timeout = document.querySelector('#timeout');
