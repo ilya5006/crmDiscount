@@ -8,29 +8,41 @@
 
     require_once "./php/db.php";
 
+    function incrementDate($date, $interval)
+    {
+        $date = date_create($date);
+        date_add($date, date_interval_create_from_date_string($interval));
+        $date = date_format($date, 'Y-m-d');
+        return $date;
+    }
+
     function writeoffBonuses()
     {
-        $date = date_create('2019-12-25');
-        $date = date_format($date, 'Y-m-d');
+        $today = date_create();
+        $today = date_format($today, 'Y-m-d');
 
         $lastWriteoffDate = Database::query("SELECT * FROM last_writeoff_date")['last_writeoff_date'];
         $lastWriteoffDate = date_create($lastWriteoffDate);
 
-        while (date_format($lastWriteoffDate, 'Y-m-d') != $date)
+        while (date_format($lastWriteoffDate, 'Y-m-d') != $today)
         {
             $stringLastWriteoffDate = date_format($lastWriteoffDate, 'Y-m-d');
             Database::queryExecute("UPDATE clients SET bonuses = 0 WHERE next_writeoff_date = '$stringLastWriteoffDate'");
 
-            $nextWriteoffDateForClient = date_create($stringLastWriteoffDate);
-            date_add($nextWriteoffDateForClient, date_interval_create_from_date_string('1 month'));
-            $stringNextWriteoffDateForClient = date_format($nextWriteoffDateForClient, 'Y-m-d');
+            $nextWriteoffDateForClient = incrementDate($stringLastWriteoffDate, '1 month');
 
-            Database::queryExecute("UPDATE clients SET next_writeoff_date = '$stringNextWriteoffDateForClient' WHERE next_writeoff_date = '$stringLastWriteoffDate'");
+            Database::queryExecute("UPDATE clients SET next_writeoff_date = '$nextWriteoffDateForClient' WHERE next_writeoff_date = '$stringLastWriteoffDate'");
 
             date_add($lastWriteoffDate, date_interval_create_from_date_string('1 day'));
         }
 
-        Database::queryExecute("UPDATE last_writeoff_date SET last_writeoff_date = '$date'");
+        Database::queryExecute("UPDATE clients SET bonuses = 0 WHERE next_writeoff_date = '$today'"); // Ибо обновляются все, у кого должны списать, кроме сегодняшнего дня
+        
+        $nextWriteoffDateForClient = incrementDate($today, '1 month');
+        
+        Database::queryExecute("UPDATE clients SET next_writeoff_date = '$nextWriteoffDateForClient' WHERE next_writeoff_date = '$today'");       
+        
+        Database::queryExecute("UPDATE last_writeoff_date SET last_writeoff_date = '$today'");
     }
 
     writeoffBonuses();

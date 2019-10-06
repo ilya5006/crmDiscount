@@ -16,6 +16,6 @@
     $totalBonusesAmount = $currentClientBonuses + $newBonuses;
 
     Database::queryExecute("UPDATE clients SET bonuses = '$totalBonusesAmount' WHERE id_client = '$idClient'");
-
+    
     header("Location: ../index.php");
 ?>
