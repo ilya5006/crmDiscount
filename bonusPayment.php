@@ -24,15 +24,18 @@
 <body>
 
     <div id="info">
-        <p> <strong>Максимальная сумма оплаты бонусами:</strong> <span id="maximum_bonuses"><?php echo $maximumBonusesToPayment; ?></span> </p>   
-        <p> <strong>Оставшаяся сумма заказа в рублях:</strong> <span id="remaining_sum"><?php echo $remainingSum ?> </span></p>
-        <p> <strong>Полная стоимость заказа:</strong> <span id="total_price"><?php echo $sum ?></span> </p>
-        <p> <strong>Количество бонусов у клиента:</strong> <span id="client_bonuses"><?php echo $clientBonuses; ?></span></p>
+        <p> <strong>Максимальная сумма оплаты бонусами:</strong> <br> <span id="maximum_bonuses"><?php echo $maximumBonusesToPayment; ?></span> </p>   
+        <hr>
+        <p> <strong>Оставшаяся сумма заказа в рублях:</strong> <br> <span id="remaining_sum"><?php echo $remainingSum ?> </span></p>
+        <hr>
+        <p> <strong>Полная стоимость заказа:</strong> <br> <span id="total_price"><?php echo $sum ?></span> </p>
+        <hr>
+        <p> <strong>Количество бонусов у клиента:</strong> <br> <span id="client_bonuses"><?php echo $clientBonuses; ?></span></p>
     </div>
 
     <form action="./php/bonusPayment.php" method="GET" id="bonus_payment">
         Введите кол-во бонусов <br>
-        <input id="bonuses_quantity" type="text" placeholder="Введите кол-во бонусов" name="sumBonusesPayment" value="<?php echo $maximumBonusesToPayment ?>">
+        <input id="bonuses_quantity" type="number" placeholder="Введите кол-во бонусов" name="sumBonusesPayment" min="0">
         <input type="submit" value="Оплата бонусами">
     </form>
 
@@ -41,14 +44,32 @@
         let bonusesQuantity = document.querySelector('#bonuses_quantity');
         let maximumBonuses = document.querySelector('#maximum_bonuses');
         let totalPrice = document.querySelector('#total_price');
+        let clientBonuses = document.querySelector('#client_bonuses');
 
         bonusesQuantity.addEventListener('input', (event) =>
         {
-            if (parseInt(event.target.value) > parseInt(maximumBonuses.textContent))
+            // НОРМАЛЬНО РАБОТАЕТ
+            // if (parseInt(event.target.value) > parseInt(maximumBonuses.textContent))
+            // {
+            //     event.target.value = maximumBonuses.textContent;
+            // }
+
+            let maximum;
+
+            if (parseInt(clientBonuses.textContent) > parseInt(maximumBonuses.textContent))
             {
-                event.target.value = maximumBonuses.textContent;
+                maximum = parseInt(maximumBonuses.textContent);
             }
-            
+            else
+            {
+                maximum = parseInt(clientBonuses.textContent);
+            }
+
+            if (parseInt(event.target.value) > maximum)
+            {
+                event.target.value = maximum;
+            }
+
             remainingSum.textContent = parseInt(totalPrice.textContent) - parseInt(event.target.value);
         });
     </script>

@@ -22,6 +22,8 @@
     </header>
 
     <div id="info">
+        <p> <strong>ID:</strong> <br> <?php echo $_SESSION['clientInfo']['id_client']; ?> </p>
+        <hr>
         <p id="fio"> <strong>ФИО:</strong> <br> <?php echo $_SESSION['clientInfo']['fio']; ?> </p>
         <hr>
         <p id="bonuses"> <strong>Количество бонусов:</strong> <br> <?php echo $_SESSION['clientInfo']['bonuses']; ?> </p>
@@ -30,12 +32,12 @@
     </div>
 
     <form id="bonus_payment" action="./bonusPayment.php" method="GET">
-        <input type="text" placeholder="Сумма заказа в рублях" name="sum">
+        <input type="number" placeholder="Сумма заказа в рублях" name="sum" required>
         <input type="submit" value="Оплатить часть суммы бонусами">
     </form>
 
     <form id="accrual_of_bonuses" action="./php/accrualOfBonuses.php" method="GET">
-        <input type="text" placeholder="Сумма заказа в рублях" name="sum">
+        <input type="number" placeholder="Сумма заказа в рублях" name="sum" required>
         <input type="submit" value="Начисление бонусов">
     </form>
 </body>

@@ -178,25 +178,25 @@ form input, .wrapper a
 	border: 0;
 }
 
-input[type="text"], input[type="password"]
+input[type="text"], input[type="password"], input[type="number"]
 {
 	color: rgb(136, 136, 136);
 	border: 3px solid rgb(215, 215, 215);
 	background-color: rgb(230, 230, 230);
 }
 
-input[type="text"]::placeholder, input[type="password"]::placeholder
+input[type="text"]::placeholder, input[type="password"]::placeholder, input[type="number"]::placeholder
 {
 	color: rgb(172, 172, 172);
 }
 
-input[type="text"]:hover, input[type="password"]:hover
+input[type="text"]:hover, input[type="password"]:hover, input[type="number"]:hover
 {
 	color: rgb(94, 94, 94);
 	border: 3px solid rgb(230, 78, 98);
 }
 
-input[type="text"]:focus, input[type="password"]:focus
+input[type="text"]:focus, input[type="password"]:focus, input[type="number"]:focus
 {
 	color: rgb(8, 8, 8);
 	border: 3px solid rgb(166, 37, 73);
