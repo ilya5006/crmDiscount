@@ -5,7 +5,7 @@
         header("Location: ../auth.html");
     }
     $sum = $_GET['sum'];
-    $maximumBonusesToPayment = $sum * 30 / 100;
+    $maximumBonusesToPayment = floor($sum * 30 / 100);
     $clientBonuses = (int)$_SESSION['clientInfo']['bonuses'];
     $remainingSum = $sum - $maximumBonusesToPayment;
 ?>
@@ -59,13 +59,15 @@
             {
                 maximum = parseInt(clientBonuses.textContent);
             }
+
             if (parseInt(event.target.value) > maximum)
             {
                 event.target.value = maximum;
             }
+
             remainingSum.textContent = parseInt(totalPrice.textContent) - parseInt(event.target.value);
 
-            percent.textContent = parseInt(bonusesQuantity.value) * 100 / parseInt(totalPrice.textContent);
+            percent.textContent = (parseInt(bonusesQuantity.value) * 100 / parseInt(totalPrice.textContent)).toFixed(2);
         });
     </script>
 </body>
