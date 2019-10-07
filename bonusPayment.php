@@ -7,7 +7,6 @@
     $sum = $_GET['sum'];
     $maximumBonusesToPayment = floor($sum * 30 / 100);
     $clientBonuses = (int)$_SESSION['clientInfo']['bonuses'];
-    $remainingSum = $sum - $maximumBonusesToPayment;
 ?>
 
 <!DOCTYPE html>
@@ -27,16 +26,16 @@
         <hr>
         <p> <strong>Максимальная сумма оплаты бонусами:</strong> <br> <span id="maximum_bonuses"><?php echo $maximumBonusesToPayment; ?></span> </p>   
         <hr>
-        <p> <strong>Оставшаяся сумма заказа в рублях:</strong> <br> <span id="remaining_sum"><?php echo $remainingSum ?> </span></p>
+        <p> <strong>Оставшаяся сумма заказа в рублях:</strong> <br> <span id="remaining_sum"><?php echo $sum; ?> </span></p>
         <hr>
-        <p> <strong>Полная стоимость заказа:</strong> <br> <span id="total_price"><?php echo $sum ?></span> </p>
+        <p> <strong>Полная стоимость заказа:</strong> <br> <span id="total_price"><?php echo $sum; ?></span> </p>
         <hr>
         <p> <strong>Количество бонусов у клиента:</strong> <br> <span id="client_bonuses"><?php echo $clientBonuses; ?></span></p>
     </div>
 
     <form action="./php/bonusPayment.php" method="GET" id="bonus_payment">
         Введите кол-во бонусов <br>
-        <input id="bonuses_quantity" type="number" placeholder="Введите кол-во бонусов" name="sum" min="0">
+        <input id="bonuses_quantity" type="number" placeholder="Введите кол-во бонусов" name="sum" min="1">
         <input type="submit" value="Оплата бонусами">
     </form>
 
