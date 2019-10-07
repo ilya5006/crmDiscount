@@ -51,23 +51,20 @@
         $today = date_format($today, 'Y-m-d');
 
         $lastWriteoffDate = Database::query("SELECT * FROM last_writeoff_date")['last_writeoff_date'];
-        
+
         if ($lastWriteoffDate != $today)
         {
             $needToWriteoffBonuses = Database::queryAll("SELECT id_client, next_writeoff_date FROM clients WHERE next_writeoff_date BETWEEN '$lastWriteoffDate' AND '$today'");
-        }
+        
+            foreach($needToWriteoffBonuses as $row)
+            {
+                $idClient = $row['id_client'];
+                $currentWriteoffDate = $row['next_writeoff_date'];
+                $nextWriteoffDate = incrementDate($currentWriteoffDate, '1 month');
+                
+                Database::queryExecute("UPDATE clients SET bonuses = 0, next_writeoff_date = '$nextWriteoffDate' WHERE id_client = '$idClient'");
+            }
 
-        foreach($needToWriteoffBonuses as $row)
-        {
-            $idClient = $row['id_client'];
-            $currentWriteoffDate = $row['next_writeoff_date'];
-            $nextWriteoffDate = incrementDate($currentWriteoffDate, '1 month');
-            
-            Database::queryExecute("UPDATE clients SET bonuses = 0, next_writeoff_date = '$nextWriteoffDate' WHERE id_client = '$idClient'");
-        }
-
-        if ($lastWriteoffDate != $today)
-        {
             Database::queryExecute("UPDATE last_writeoff_date SET last_writeoff_date = '$today'");
         }
     }
