@@ -25,6 +25,7 @@
         ?>
             id = '<? echo $data['id_client']; ?>';
             fio = '<? echo $data['fio']; ?>';
+            fio = fio.toLowerCase();
             bonuses = '<? echo $data['bonuses']; ?>';
 
             users.push([id,fio,bonuses]);
@@ -55,7 +56,7 @@
                 users.forEach(function(element) 
                 {
                     string = element[1];
-                    re = document.querySelector("#input-search-all-client").value;
+                    re = document.querySelector("#input-search-all-client").value.toLowerCase();
                     
                     if (string.indexOf(re) != -1) 
                     {
