@@ -281,7 +281,7 @@ header h1, h1
 
 #menu a::after
 {
-	left: 0	;
+	left: 0;
 	transition: 0.3s all;
 	position: absolute;
 	bottom: 0;
