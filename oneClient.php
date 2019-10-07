@@ -5,7 +5,7 @@
     {
         header("Location: ../auth.html");
     }
-
+    
     if (isset($_GET['accrual']))
     {
         $link = "Location: ./php/accrualOfBonuses.php?sum=" . $_GET['sum'];
@@ -20,6 +20,11 @@
     $idClient = $_GET['id_client'];
     require_once "./php/db.php";
     $clientInfo = Database::query("SELECT * FROM clients WHERE id_client = '$idClient'");
+    if (isset($_GET['id_client']))
+    {
+        $_SESSION['clientInfo']['id_client'] = $_GET['id_client'];
+        $_SESSION['clientInfo']['bonuses'] = $clientInfo['bonuses'];
+    }
 ?>
 
 <!DOCTYPE html>

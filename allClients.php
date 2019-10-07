@@ -75,7 +75,7 @@
             document.querySelector(".users").innerHTML = "";
             users.forEach(function(data) 
             {
-                info = '<a href="php/findClient.php?id_client='+data[0]+ '" class="client"> <p class="client__id"> ID: ' + data[0] + '</p> <p class="client__fio">' + data[1] + '</p> <p class=class__bonuses>' + data[2] + '</p> </a>';
+                info = '<a href="oneClient.php?id_client='+data[0]+ '" class="client"> <p class="client__id"> ID: ' + data[0] + '</p> <p class="client__fio">' + data[1] + '</p> <p class=class__bonuses>' + data[2] + '</p> </a>';
                 document.querySelector(".users").innerHTML += info;
         });
         }
@@ -85,7 +85,7 @@
             document.querySelector(".users").innerHTML = "";
             usersSearch.forEach(function (data) 
             {
-                info = '<a href="php/findClient.php?id_client='+data[0]+ '" class="client"> <p class="client__id"> ID: ' + data[0] + '</p> <p class="client__fio">' + data[1] + '</p> <p class=class__bonuses>' + data[2] + '</p> </a>';
+                info = '<a href="oneClient.php?id_client='+data[0]+ '" class="client"> <p class="client__id"> ID: ' + data[0] + '</p> <p class="client__fio">' + data[1] + '</p> <p class=class__bonuses>' + data[2] + '</p> </a>';
                 document.querySelector(".users").innerHTML += info;
             });
         }
