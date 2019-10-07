@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
+    <? require_once(__DIR__ . '\php\menu.php'); ?> 
     <h1>Бонусы начисляются при минимальной сумме заказа 500 рублей</h1>
     <form action="./php/createClient.php" method="GET" id="new_client">
         <input type="text" name="fio" placeholder="Введите ФИО" required>

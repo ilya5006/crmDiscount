@@ -34,6 +34,7 @@
 </script>
 </head>
 <body>
+    <? require_once(__DIR__ . '\php\menu.php'); ?> 
     <h1> Список всех клиентов </h1>
     <div id="user_list">
         <input type="text" placeholder="Показанны все клиенты" id="input-search-all-client" oninput="searchClient()">
@@ -74,7 +75,7 @@
             document.querySelector(".users").innerHTML = "";
             users.forEach(function(data) 
             {
-                info = "<div class=\"client\">\n<p class=\"client__id\"> ".concat(data[0], " </p>\n<p class=\"client__fio\"> ").concat(data[1], " </p>\n<p class=\"class__bonuses\"> ").concat(data[2], " </p>\n</div>");
+                info = '<a href="php/findClient.php?id_client='+data[0]+ '" class="client"> <p class="client__id"> ID: ' + data[0] + '</p> <p class="client__fio">' + data[1] + '</p> <p class=class__bonuses>' + data[2] + '</p> </a>';
                 document.querySelector(".users").innerHTML += info;
         });
         }
@@ -84,7 +85,7 @@
             document.querySelector(".users").innerHTML = "";
             usersSearch.forEach(function (data) 
             {
-                info = "<div class=\"client\">\n<p class=\"client__id\"> ".concat(data[0], " </p>\n<p class=\"client__fio\"> ").concat(data[1], " </p>\n<p class=\"class__bonuses\"> ").concat(data[2], " </p>\n</div>");
+                info = '<a href="php/findClient.php?id_client='+data[0]+ '" class="client"> <p class="client__id"> ID: ' + data[0] + '</p> <p class="client__fio">' + data[1] + '</p> <p class=class__bonuses>' + data[2] + '</p> </a>';
                 document.querySelector(".users").innerHTML += info;
             });
         }
