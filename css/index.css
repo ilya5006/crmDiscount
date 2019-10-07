@@ -257,6 +257,7 @@ header h1, h1
 
 #menu a
 {
+	text-align: center;
 	opacity: 0.5;
 	font-size: 18px;
 	color: white;
