@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 07 2019 г., 09:35
+-- Время создания: Окт 07 2019 г., 11:25
 -- Версия сервера: 8.0.15
 -- Версия PHP: 7.3.2
 
@@ -29,6 +29,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `authorization` (
+  `id_cashiers` int(11) NOT NULL,
+  `fio` varchar(55) NOT NULL,
   `login` varchar(15) NOT NULL,
   `password` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
@@ -37,8 +39,8 @@ CREATE TABLE `authorization` (
 -- Дамп данных таблицы `authorization`
 --
 
-INSERT INTO `authorization` (`login`, `password`) VALUES
-('admin', 'admin');
+INSERT INTO `authorization` (`id_cashiers`, `fio`, `login`, `password`) VALUES
+(1, 'Павленко Флорентина Богдановна', 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -61,7 +63,7 @@ INSERT INTO `clients` (`id_client`, `fio`, `bonuses`, `next_writeoff_date`) VALU
 (1, 'Иванов Иван Иванович', 10, '2019-11-07'),
 (2, 'Попов Александр Дмитриевич', 2600010, '2019-11-07'),
 (8, 'Манисов Александр Ильич', 10, '2019-11-07'),
-(16, 'Евгений Понасенков', 5, '2019-11-07'),
+(16, 'Евгений Понасенков', 100, '2019-11-07'),
 (20, 'Имя Фамилия Отчество', 20, '2019-11-07'),
 (21, 'Имя Фамилия Отчество', 20, '2019-11-07'),
 (22, 'Имя Фамилия Отчество', 20, '2019-11-07');
@@ -88,6 +90,12 @@ INSERT INTO `last_writeoff_date` (`last_writeoff_date`) VALUES
 --
 
 --
+-- Индексы таблицы `authorization`
+--
+ALTER TABLE `authorization`
+  ADD PRIMARY KEY (`id_cashiers`);
+
+--
 -- Индексы таблицы `clients`
 --
 ALTER TABLE `clients`
@@ -96,6 +104,12 @@ ALTER TABLE `clients`
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
+
+--
+-- AUTO_INCREMENT для таблицы `authorization`
+--
+ALTER TABLE `authorization`
+  MODIFY `id_cashiers` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `clients`
