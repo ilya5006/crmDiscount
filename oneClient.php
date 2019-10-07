@@ -19,11 +19,11 @@
 
     $idClient = $_GET['id_client'];
     require_once "./php/db.php";
-    $clientInfo = Database::query("SELECT * FROM clients WHERE id_client = '$idClient'");
+    
     if (isset($_GET['id_client']))
     {
-        $_SESSION['clientInfo']['id_client'] = $_GET['id_client'];
-        $_SESSION['clientInfo']['bonuses'] = $clientInfo['bonuses'];
+        $clientInfo = Database::query("SELECT * FROM clients WHERE id_client = '$idClient'");
+        $_SESSION['clientInfo'] = $clientInfo;
     }
 ?>
 
@@ -38,7 +38,7 @@
 </head>
 <body>
     <header>
-        <? require_once(__DIR__ . '\php\menu.php'); ?>
+        <?php require_once(__DIR__ . '\php\menu.php'); ?>
         <h1>Панель управления</h1>
     </header>
 
