@@ -55,7 +55,7 @@
 
     setTimeout(function () 
     {
-        location.href = '../oneClient.php';
+        location.href = '../oneClient.php?id_client=<?php echo $clientId; ?>';
     }, 5000);
     
 </script>
