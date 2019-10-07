@@ -5,7 +5,7 @@
         header("Location: ../auth.html");
     }
     $sum = $_GET['sum'];
-    $maximumBonusesToPayment = round($sum / 2);
+    $maximumBonusesToPayment = $sum * 30 / 100;
     $clientBonuses = (int)$_SESSION['clientInfo']['bonuses'];
     $remainingSum = $sum - $maximumBonusesToPayment;
 ?>
@@ -23,6 +23,8 @@
     <? require_once(__DIR__ . '\php\menu.php'); ?> 
 
     <div id="info">
+        <p> <strong>Процент суммы, оплачиваемый бонусами: </strong> <br> <span id="percent">0</span> </p>   
+        <hr>
         <p> <strong>Максимальная сумма оплаты бонусами:</strong> <br> <span id="maximum_bonuses"><?php echo $maximumBonusesToPayment; ?></span> </p>   
         <hr>
         <p> <strong>Оставшаяся сумма заказа в рублях:</strong> <br> <span id="remaining_sum"><?php echo $remainingSum ?> </span></p>
@@ -44,6 +46,8 @@
         let maximumBonuses = document.querySelector('#maximum_bonuses');
         let totalPrice = document.querySelector('#total_price');
         let clientBonuses = document.querySelector('#client_bonuses');
+        let percent = document.querySelector('#percent');
+
         bonusesQuantity.addEventListener('input', (event) =>
         {
             let maximum;
@@ -60,6 +64,8 @@
                 event.target.value = maximum;
             }
             remainingSum.textContent = parseInt(totalPrice.textContent) - parseInt(event.target.value);
+
+            percent.textContent = parseInt(bonusesQuantity.value) * 100 / parseInt(totalPrice.textContent);
         });
     </script>
 </body>
