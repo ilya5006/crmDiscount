@@ -7,6 +7,11 @@
 	padding: 0px;
 }
 
+header
+{
+	width: 100%;
+}
+
 html, body, #main
 {
 	width: 100%;
@@ -35,7 +40,8 @@ body
 }
 
 a
-{
+{	
+	color: black;
 	text-decoration: none;
 }
 
@@ -63,7 +69,7 @@ form, .wrapper, #info, #input-search-all-client
 {
 	display: flex;
 	align-items: center;
-	flex-flow: row wrap;
+	flex-flow: row nowrap;
 
 	margin-bottom: 15px;
 	padding: 15px 35px;
@@ -91,8 +97,8 @@ form, .wrapper, #info, #input-search-all-client
 .client__id
 {
 	font-size: 26px;
-
-	width: 5%;
+	white-space: nowrap;
+	min-width: 8%;
 	height: 100%;
 }
 
@@ -113,7 +119,7 @@ form, .wrapper, #info, #input-search-all-client
 {
 	font-size: 26px;
 
-	width: 5%;
+	min-width: 8%;
 	height: 100%;
 	padding-left: 25px;
 
@@ -242,6 +248,63 @@ header h1, h1
 	width: 650px;
 }
 
+#menu
+{
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap;
+}
+
+#menu a
+{
+	opacity: 0.5;
+	font-size: 18px;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 15px 35px;
+	transition: 0.3s all;
+	position: relative;
+}
+
+#logout
+{
+	margin-left: auto;
+}
+
+#menu a:hover
+{
+	opacity: 1;
+}
+
+#menu a::after
+{
+	transition: 0.3s all;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 2px;
+	background-color: white;
+	content: "";
+	transform: scale(0);
+}
+
+#menu a:hover::after
+{
+	transform: scale(1);
+}
+
+#fio
+{
+	color: white;
+	text-align: center;
+	width: 100%;
+	opacity: 0.7;
+	font-size: 20px;
+	margin-top: 15px;
+}
+
 @media screen and (max-width: 800px)
 {
 	.wrapper
@@ -258,6 +321,14 @@ header h1, h1
 
 @media screen and (max-width: 700px)
 {
+	#menu
+	{
+		flex-flow: column nowrap;
+	}
+	#logout
+	{
+		margin-left: 0px;
+	}
 	header h1, h1
 	{
 		margin-top: 0px;
@@ -285,6 +356,10 @@ header h1, h1
 	header h1, h1
 	{
 		font-size: 8vw;
+	}
+	#fio
+	{
+		font-size: 5vw;
 	}
 	#main, #user_list
 	{
