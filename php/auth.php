@@ -6,11 +6,12 @@
     $login = $_GET['login'];
     $password = $_GET['password'];
 
-    $isAuth = Database::query("SELECT * FROM authorization WHERE login = '$login' AND password = '$password'");
-    
-    if ($isAuth)
+    $authData = Database::query("SELECT * FROM authorization WHERE login = '$login' AND password = '$password'");
+
+    if ($authData)
     {
         $_SESSION['isAuth'] = true;
+        $_SESSION['cashiersData'] = $authData;
         header("Location: ../index.php");
     }
     else
