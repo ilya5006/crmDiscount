@@ -36,7 +36,7 @@
 
     <form action="./php/bonusPayment.php" method="GET" id="bonus_payment">
         Введите кол-во бонусов <br>
-        <input id="bonuses_quantity" type="number" placeholder="Введите кол-во бонусов" name="sumBonusesPayment" min="0">
+        <input id="bonuses_quantity" type="number" placeholder="Введите кол-во бонусов" name="sum" min="0">
         <input type="submit" value="Оплата бонусами">
     </form>
 
