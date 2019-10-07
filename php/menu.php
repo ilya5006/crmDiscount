@@ -4,7 +4,7 @@
     <a href="/createClient.php">Создать клиента</a>
 
     <a href="php/logout.php" id="logout">Выйти</a>
-    <p id="fio"> <? echo $_SESSION['cashiersData']['fio']; ?> </p>
+    <p id="header_fio"> <? echo $_SESSION['cashiersData']['fio']; ?> </p>
 </div>
 
 
