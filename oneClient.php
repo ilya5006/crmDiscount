@@ -38,7 +38,7 @@
 </head>
 <body>
     <header>
-        <? require_once(__DIR__ . '\php\menu.php'); ?> 
+        <? require_once(__DIR__ . '\php\menu.php'); ?>
         <h1>Панель управления</h1>
     </header>
 
@@ -56,11 +56,6 @@
         <input type="number" placeholder="Сумма заказа в рублях" name="sum" min="0" required>
         <input type="submit" value="Начисление бонусов" name="accrual">
         <input type="submit" value="Оплатить часть суммы бонусами" name="payment">
-    </form> 
-
-    <!-- <form id="accrual_of_bonuses" action="./php/accrualOfBonuses.php" method="GET">
-        <input type="number" placeholder="Сумма заказа в рублях" name="sum" required>
-        <input type="submit" value="Начисление бонусов">
-    </form> -->
+    </form>
 </body>
 </html>

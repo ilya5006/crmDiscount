@@ -16,33 +16,60 @@
         return $date;
     }
 
+    // function writeoffBonuses()
+    // {
+    //     $today = date_create();
+    //     $today = date_format($today, 'Y-m-d');
+
+    //     $lastWriteoffDate = Database::query("SELECT * FROM last_writeoff_date")['last_writeoff_date'];
+    //     $lastWriteoffDate = date_create($lastWriteoffDate);
+
+    //     while (date_format($lastWriteoffDate, 'Y-m-d') != $today)
+    //     {
+    //         $stringLastWriteoffDate = date_format($lastWriteoffDate, 'Y-m-d');
+    //         Database::queryExecute("UPDATE clients SET bonuses = 0 WHERE next_writeoff_date = '$stringLastWriteoffDate'");
+
+    //         $nextWriteoffDateForClient = incrementDate($stringLastWriteoffDate, '1 month');
+
+    //         Database::queryExecute("UPDATE clients SET next_writeoff_date = '$nextWriteoffDateForClient' WHERE next_writeoff_date = '$stringLastWriteoffDate'");
+
+    //         date_add($lastWriteoffDate, date_interval_create_from_date_string('1 day'));
+    //     }
+
+    //     Database::queryExecute("UPDATE clients SET bonuses = 0 WHERE next_writeoff_date = '$today'"); // Ибо обновляются все, у кого должны списать, кроме сегодняшнего дня
+        
+    //     $nextWriteoffDateForClient = incrementDate($today, '1 month');
+        
+    //     Database::queryExecute("UPDATE clients SET next_writeoff_date = '$nextWriteoffDateForClient' WHERE next_writeoff_date = '$today'");       
+        
+    //     Database::queryExecute("UPDATE last_writeoff_date SET last_writeoff_date = '$today'");
+    // }
+    
     function writeoffBonuses()
     {
         $today = date_create();
         $today = date_format($today, 'Y-m-d');
 
         $lastWriteoffDate = Database::query("SELECT * FROM last_writeoff_date")['last_writeoff_date'];
-        $lastWriteoffDate = date_create($lastWriteoffDate);
-
-        while (date_format($lastWriteoffDate, 'Y-m-d') != $today)
+        
+        if ($lastWriteoffDate != $today)
         {
-            $stringLastWriteoffDate = date_format($lastWriteoffDate, 'Y-m-d');
-            Database::queryExecute("UPDATE clients SET bonuses = 0 WHERE next_writeoff_date = '$stringLastWriteoffDate'");
-
-            $nextWriteoffDateForClient = incrementDate($stringLastWriteoffDate, '1 month');
-
-            Database::queryExecute("UPDATE clients SET next_writeoff_date = '$nextWriteoffDateForClient' WHERE next_writeoff_date = '$stringLastWriteoffDate'");
-
-            date_add($lastWriteoffDate, date_interval_create_from_date_string('1 day'));
+            $needToWriteoffBonuses = Database::queryAll("SELECT id_client, next_writeoff_date FROM clients WHERE next_writeoff_date BETWEEN '$lastWriteoffDate' AND '$today'");
         }
 
-        Database::queryExecute("UPDATE clients SET bonuses = 0 WHERE next_writeoff_date = '$today'"); // Ибо обновляются все, у кого должны списать, кроме сегодняшнего дня
-        
-        $nextWriteoffDateForClient = incrementDate($today, '1 month');
-        
-        Database::queryExecute("UPDATE clients SET next_writeoff_date = '$nextWriteoffDateForClient' WHERE next_writeoff_date = '$today'");       
-        
-        Database::queryExecute("UPDATE last_writeoff_date SET last_writeoff_date = '$today'");
+        foreach($needToWriteoffBonuses as $row)
+        {
+            $idClient = $row['id_client'];
+            $currentWriteoffDate = $row['next_writeoff_date'];
+            $nextWriteoffDate = incrementDate($currentWriteoffDate, '1 month');
+            
+            Database::queryExecute("UPDATE clients SET bonuses = 0, next_writeoff_date = '$nextWriteoffDate' WHERE id_client = '$idClient'");
+        }
+
+        if ($lastWriteoffDate != $today)
+        {
+            Database::queryExecute("UPDATE last_writeoff_date SET last_writeoff_date = '$today'");
+        }
     }
 
     writeoffBonuses();
