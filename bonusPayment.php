@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
-    <? require_once(__DIR__ . '\php\menu.php'); ?> 
+    <? require_once(__DIR__ . '/php/menu.php'); ?> 
 
     <div id="info">
         <p> <strong>Процент суммы, оплачиваемый бонусами: </strong> <br> <span id="percent">0</span> </p>   
