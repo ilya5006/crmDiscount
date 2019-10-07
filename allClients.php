@@ -54,9 +54,9 @@
                 users.forEach(function(element) 
                 {
                     string = element[1];
-                    re = '[*/' + document.querySelector("#input-search-all-client").value + '/*]';
-
-                    if (string.search(re) == 0) 
+                    re = document.querySelector("#input-search-all-client").value;
+                    
+                    if (string.indexOf(re) != -1) 
                     {
                         usersSearch.push([element[0], element[1], element[2]]);
                     }
