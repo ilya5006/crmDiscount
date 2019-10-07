@@ -10,7 +10,7 @@
 
     $idClient = $_SESSION['clientInfo']['id_client'];
     $currentClientBonuses = (int)$_SESSION['clientInfo']['bonuses'];
-    $sumBonusesPayment = $_GET['sumBonusesPayment'];
+    $sumBonusesPayment = $_GET['sum'];
     $totalBonusesAmount = $currentClientBonuses - $sumBonusesPayment;
     Database::queryExecute("UPDATE clients SET bonuses = '$totalBonusesAmount' WHERE id_client = '$idClient'");
 

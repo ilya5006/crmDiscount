@@ -5,6 +5,21 @@
     {
         header("Location: ../auth.html");
     }
+
+    if (isset($_GET['accrual']))
+    {
+        $link = "Location: ./php/accrualOfBonuses.php?sum=" . $_GET['sum'];
+        header($link);
+    }
+    if (isset($_GET['payment']))
+    {
+        $link = "Location: ./bonusPayment.php?sum=" . $_GET['sum'];
+        header($link);
+    }
+
+    $idClient = $_GET['id_client'];
+    require_once "./php/db.php";
+    $clientInfo = Database::query("SELECT * FROM clients WHERE id_client = '$idClient'");
 ?>
 
 <!DOCTYPE html>
@@ -23,23 +38,24 @@
     </header>
 
     <div id="info">
-        <p> <strong>ID:</strong> <br> <?php echo $_SESSION['clientInfo']['id_client']; ?> </p>
+        <p> <strong>ID:</strong> <br> <?php echo $clientInfo['id_client']; ?> </p>
         <hr>
-        <p id="fio"> <strong>ФИО:</strong> <br> <?php echo $_SESSION['clientInfo']['fio']; ?> </p>
+        <p id="fio"> <strong>ФИО:</strong> <br> <?php echo $clientInfo['fio']; ?> </p>
         <hr>
-        <p id="bonuses"> <strong>Количество бонусов:</strong> <br> <?php echo $_SESSION['clientInfo']['bonuses']; ?> </p>
+        <p id="bonuses"> <strong>Количество бонусов:</strong> <br> <?php echo $clientInfo['bonuses']; ?> </p>
         <hr>
-        <p id="next_writeoff_date"> <strong>Следующая дата списания бонусов:</strong> <br> <?php echo $_SESSION['clientInfo']['next_writeoff_date']; ?> </p>
+        <p id="next_writeoff_date"> <strong>Следующая дата списания бонусов:</strong> <br> <?php echo $clientInfo['next_writeoff_date']; ?> </p>
     </div>
 
-    <form id="bonus_payment" action="./bonusPayment.php" method="GET">
-        <input type="number" placeholder="Сумма заказа в рублях" name="sum" required>
-        <input type="submit" value="Оплатить часть суммы бонусами">
-    </form>
+    <form id="bonus_payment" action="" method="GET">
+        <input type="number" placeholder="Сумма заказа в рублях" name="sum" min="0" required>
+        <input type="submit" value="Начисление бонусов" name="accrual">
+        <input type="submit" value="Оплатить часть суммы бонусами" name="payment">
+    </form> 
 
-    <form id="accrual_of_bonuses" action="./php/accrualOfBonuses.php" method="GET">
+    <!-- <form id="accrual_of_bonuses" action="./php/accrualOfBonuses.php" method="GET">
         <input type="number" placeholder="Сумма заказа в рублях" name="sum" required>
         <input type="submit" value="Начисление бонусов">
-    </form>
+    </form> -->
 </body>
 </html>
