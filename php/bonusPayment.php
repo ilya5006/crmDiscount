@@ -15,6 +15,6 @@
     $sumBonusesPayment = $_GET['sum'];
     $totalBonusesAmount = $currentClientBonuses - $sumBonusesPayment;
     Database::queryExecute("UPDATE clients SET bonuses = '$totalBonusesAmount' WHERE id_client = '$idClient'");
-    Database::queryExecute("INSERT INTO `log` (`id_cashiers`, `types`, `id_client`, `bonuses`, `time`) VALUES ('$idCashier', 'оплатил(а)', '$idClient', '$sumBonusesPayment', CURRENT_DATE());");
+    Database::queryExecute("INSERT INTO `log` (`id_cashiers`, `types`, `id_client`, `bonuses`, `time`) VALUES ('$idCashier', 'снял(а)', '$idClient', '$sumBonusesPayment', CURRENT_DATE());");
     header("Location: ../oneClient.php?id_client=".$idClient);
 ?>
