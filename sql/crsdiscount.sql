@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1:3306
--- Время создания: Окт 07 2019 г., 11:25
--- Версия сервера: 8.0.15
--- Версия PHP: 7.3.2
+-- Хост: localhost
+-- Время создания: Окт 07 2019 г., 21:28
+-- Версия сервера: 10.4.8-MariaDB-1:10.4.8+maria~bionic-log
+-- Версия PHP: 7.3.9-1+ubuntu18.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -61,8 +61,8 @@ CREATE TABLE `clients` (
 
 INSERT INTO `clients` (`id_client`, `fio`, `bonuses`, `next_writeoff_date`) VALUES
 (1, 'Иванов Иван Иванович', 10, '2019-11-07'),
-(2, 'Попов Александр Дмитриевич', 2600010, '2019-11-07'),
-(8, 'Манисов Александр Ильич', 10, '2019-11-07'),
+(2, 'Попов Александр Дмитриевич', 2599859, '2019-11-07'),
+(8, 'Манисов Александр Ильич', 34, '2019-11-07'),
 (16, 'Евгений Понасенков', 100, '2019-11-07'),
 (20, 'Имя Фамилия Отчество', 20, '2019-11-07'),
 (21, 'Имя Фамилия Отчество', 20, '2019-11-07'),
@@ -85,6 +85,27 @@ CREATE TABLE `last_writeoff_date` (
 INSERT INTO `last_writeoff_date` (`last_writeoff_date`) VALUES
 ('2019-10-07');
 
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `log`
+--
+
+CREATE TABLE `log` (
+  `id_cashiers` int(11) NOT NULL,
+  `types` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `id_client` int(11) NOT NULL,
+  `bonuses` int(11) NOT NULL,
+  `time` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Дамп данных таблицы `log`
+--
+
+INSERT INTO `log` (`id_cashiers`, `types`, `id_client`, `bonuses`, `time`) VALUES
+(1, 'начислил(а)', 8, 80, '2019-10-07 21:27:01');
+
 --
 -- Индексы сохранённых таблиц
 --
@@ -102,6 +123,13 @@ ALTER TABLE `clients`
   ADD PRIMARY KEY (`id_client`);
 
 --
+-- Индексы таблицы `log`
+--
+ALTER TABLE `log`
+  ADD KEY `id_cashiers` (`id_cashiers`),
+  ADD KEY `id_client` (`id_client`);
+
+--
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
@@ -116,6 +144,17 @@ ALTER TABLE `authorization`
 --
 ALTER TABLE `clients`
   MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- Ограничения внешнего ключа сохраненных таблиц
+--
+
+--
+-- Ограничения внешнего ключа таблицы `log`
+--
+ALTER TABLE `log`
+  ADD CONSTRAINT `log_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `clients` (`id_client`),
+  ADD CONSTRAINT `log_ibfk_2` FOREIGN KEY (`id_cashiers`) REFERENCES `authorization` (`id_cashiers`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
