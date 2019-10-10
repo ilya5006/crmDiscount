@@ -23,6 +23,10 @@
     if (isset($_GET['id_client']))
     {
         $clientInfo = Database::query("SELECT * FROM clients WHERE id_client = '$idClient'");
+        if (empty($clientInfo))
+        {
+            header('Location: ./index.php');
+        }
         $_SESSION['clientInfo'] = $clientInfo;
     }
 ?>
