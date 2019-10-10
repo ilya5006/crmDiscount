@@ -83,12 +83,12 @@
 </head>
 <body>
     <header>
-        <? require_once(__DIR__ . '\php\menu.php'); ?>
+        <? require_once(__DIR__ . '/php/menu.php'); ?>
         <h1>Панель управления</h1>
     </header>
     <div id="main">
         <form id="search-form" action="./oneClient.php" method="GET">
-            <input type="text" placeholder="Введите id клиента" name="id_client" id="id_client">
+            <input type="number" placeholder="Введите id клиента" name="id_client" id="id_client" required>
             <input type="submit" value="Поиск" id="search">       <!-- Я не знаю, почему так, но если прописать ширину в .css-файле, то оно не работает... -->
         </form>
 

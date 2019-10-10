@@ -46,7 +46,7 @@ a
 }
 
 
-form:not(#search-form, #info)
+form:not(#search-form)
 {
 	width: 650px;
 }
