@@ -23,6 +23,10 @@
     if (isset($_GET['id_client']))
     {
         $clientInfo = Database::query("SELECT * FROM clients WHERE id_client = '$idClient'");
+        if (empty($clientInfo))
+        {
+            header('Location: ./index.php');
+        }
         $_SESSION['clientInfo'] = $clientInfo;
     }
 ?>
@@ -38,7 +42,7 @@
 </head>
 <body>
     <header>
-        <?php require_once(__DIR__ . '\php\menu.php'); ?>
+        <? require_once(__DIR__ . '/php/menu.php'); ?>
         <h1>Панель управления</h1>
     </header>
 
@@ -53,7 +57,7 @@
     </div>
 
     <form id="bonus_payment" action="" method="GET">
-        <input type="number" placeholder="Сумма заказа в рублях" name="sum" min="0" required>
+        <input type="number" placeholder="Сумма заказа в рублях" name="sum" min="0" max="1000000" required>
         <input type="submit" value="Начисление бонусов" name="accrual">
         <input type="submit" value="Оплатить часть суммы бонусами" name="payment">
     </form>

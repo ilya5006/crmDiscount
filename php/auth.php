@@ -16,6 +16,19 @@
     }
     else
     {
-        echo '<p id="error"> Логин или пароль неверны </p>';
+        ?>
+        <head>
+            <link rel="stylesheet" href="./../css/index.css">
+        </head>
+
+        <body style="justify-content: center;">
+            <h1 id="error" stule="margin-top: 0px"> Логин или пароль неверны </h1>
+            <div class="wrapper">
+            <?
+            echo '<a href="./../auth.html"> Попробовать снова </a>';
+            ?>
+            </div>
+        </body>
+        <?
     }
 ?>
