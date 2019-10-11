@@ -46,7 +46,7 @@ a
 }
 
 
-form:not(#search-form)
+form:not(#search-form):not(#new_client):not(#bonus_payment)
 {
 	width: 650px;
 }
