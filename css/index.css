@@ -355,7 +355,7 @@ header h1, h1
 	}
 }
 
-@media screen and (max-width: 700px)
+@media screen and (max-width: 720px)
 {
 	#menu
 	{
@@ -369,7 +369,7 @@ header h1, h1
 	{
 		margin-top: 0px;
 	}
-	#auth, #info, #bonus_payment, #accrual_of_bonuses, #new_client, #bonus_payment
+	#auth, #info, #bonus_payment, #accrual_of_bonuses, #new_client, #bonus_payment, form:not(#search-form):not(#new_client):not(#bonus_payment)
 	{
 		width: 100%;
 	}
@@ -419,6 +419,10 @@ header h1, h1
 
 		text-align: center;
 	}
+	.wrapper a
+	{
+		font-size: 7vw !important;
+	}
 }
 
 @media screen and (max-width: 575px)
@@ -431,6 +435,10 @@ header h1, h1
 	.log p
 	{
 		font-size: 24px;
+	}
+	#error
+	{
+		font-size: 13vw;
 	}
 }
 
