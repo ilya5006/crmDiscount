@@ -34,7 +34,7 @@
             login = '<? echo $data['login']; ?>';
             password = '<? echo $data['password']; ?>';
 
-            cashiers.push([id,fio,login,password]);
+            cashiers.push([id, fio, login, password]);
         <?php
         }
     ?>
@@ -82,7 +82,7 @@
             document.querySelector(".users").innerHTML = "";
             cashiers.forEach(function(data) 
             {
-                info = '<a href="oneClient.php?id_client='+data[0]+ '" class="client"> <p class="client__id"> ID: ' + data[0] + '</p> <p class="client__fio">' + data[1] + '</p> <p class=class__bonuses>' + data[2] + '</p>'  + '<p class=class__bonuses>' + data[3] + '</p> </a>';
+                info = '<a href="oneCashier.php?id_cashier='+data[0]+ '" class="client"> <p class="client__id"> ID: ' + data[0] + '</p> <p class="client__fio">' + data[1] + '</p> <p class=class__bonuses>' + data[2] + '</p>'  + '<p class=class__bonuses>' + data[3] + '</p> </a>';
                 document.querySelector(".users").innerHTML += info;
             });
         }
@@ -92,7 +92,7 @@
             document.querySelector(".users").innerHTML = "";
             cashiersSearch.forEach(function(data) 
             {
-                info = '<a href="oneClient.php?id_cashier='+data[0]+ '" class="client"> <p class="client__id"> ID: ' + data[0] + '</p> <p class="client__fio">' + data[1] + '</p> <p class=class__bonuses>' + data[2] + '</p>' + '<p class=class__bonuses>' + data[3] + '</p> </a>';
+                info = '<a href="oneCashier.php?id_cashier='+data[0]+ '" class="client"> <p class="client__id"> ID: ' + data[0] + '</p> <p class="client__fio">' + data[1] + '</p> <p class=class__bonuses>' + data[2] + '</p>' + '<p class=class__bonuses>' + data[3] + '</p> </a>';
                 document.querySelector(".users").innerHTML += info;
             });
         }
