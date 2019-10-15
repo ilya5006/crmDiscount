@@ -47,7 +47,7 @@
         let clientBonuses = document.querySelector('#client_bonuses');
         let percent = document.querySelector('#percent');
 
-        bonusesQuantity.addEventListener('input', (event) =>
+        bonusesQuantity.addEventListener('input', function (event)
         {
             let maximum;
             if (parseInt(clientBonuses.textContent) > parseInt(maximumBonuses.textContent))
