@@ -4,11 +4,11 @@
     <a href="/createClient.php">Создать клиента</a>
     
     <?php
-    if ($_SESSION['cashiersData']['id_cashier'] == 1)
-    { 
+    $isAdmin = $_SESSION['cashiersData']['id_cashier'] == 1;
+    
+    if ($isAdmin)
+        echo '<a href="/admin.php"> Панель администратора </a>';
     ?>
-        <a href="/admin.php"> Панель администратора </a>
-    <?php } ?>
 
     <a href="./php/logout.php" id="logout">Выйти</a>
     <p id="header_fio"> <? echo $_SESSION['cashiersData']['fio']; ?> </p>
