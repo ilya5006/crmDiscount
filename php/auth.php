@@ -16,17 +16,6 @@
     }
     else
     {
-        ?>
-        <head>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="./../css/index.css">
-        </head>
-
-        <body style="justify-content: center;">
-            <h1 id="error" stule="margin-top: 0px"> Логин или пароль неверны </h1>
-            <div class="wrapper">
-            <a href="./../auth.html"> Попробовать снова </a>
-            </div>
-        </body>
-        <?php
+        echo '<p id="error"> Логин или пароль неверны </p>';
     }
+?>

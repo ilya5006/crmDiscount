@@ -23,21 +23,24 @@
 
 ?>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../css/index.css">
 </head>
 
-<body style="justify-content: center;">
-    <div id="info">
-    <?
-        Database::queryExecute("INSERT INTO clients VALUES (NULL, '$fio', '$bonuses', '$nextWriteoffDate')");
-        $clientId = Database::query("SELECT id_client FROM clients ORDER BY id_client DESC")['id_client'];
-        echo "<p> <strong> ID клиента: </strong> <br> $clientId  </p> <hr>";
-        echo "<p> <strong> Количество бонусов, которое было изначально зачислено: </strong> <br> $bonuses </p> <hr>";
-        echo "<p> <strong> Вы будете перенаправлены на страницу клиента через: </strong> <br> <span id='timeout'>5</span></p>";
-    ?>
-    </div>
-</body>
+<div id="info">
+<?
+    Database::queryExecute("INSERT INTO clients VALUES (NULL, '$fio', '$bonuses', '$nextWriteoffDate')");
+    $clientId = Database::query("SELECT id_client FROM clients ORDER BY id_client DESC")['id_client'];
+    echo "<p> <strong> ID клиента: </strong> <br> $clientId  </p> <hr>";
+    echo '<p> <strong> Количество бонусов, которое было изначально зачислено: </strong> <br>' . $bonuses . '</p> <hr>';
+    echo '<p> <strong> Вы будете перенаправлены на страницу клиента через: </strong> <br> <span id="timeout">5</span></p>';
+    $_SESSION['clientInfo'] = [
+        'id_client' => $clientId,
+        'fio' => $fio,
+        'bonuses' => $bonuses,
+        'next_writeoff_date' => $nextWriteoffDate
+    ];
+?>
+</div>
 
 <script>
     var timeout = document.querySelector('#timeout');
@@ -52,6 +55,7 @@
 
     setTimeout(function () 
     {
-        location.href = '../oneClient.php?id_client=<?php echo $clientId; ?>';
+        location.href = '../oneClient.php';
     }, 5000);
+    
 </script>

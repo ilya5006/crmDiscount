@@ -27,13 +27,6 @@
             $sth->execute();
             return $sth->fetchAll(PDO::FETCH_ASSOC);
         }
-        
-        public static function queryAllNum($query)
-        {
-            $sth = self::getDbh()->prepare($query);
-            $sth->execute();
-            return $sth->fetchAll(PDO::FETCH_NUM);
-        }
 
         public static function queryExecute($query)
         {
