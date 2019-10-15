@@ -44,7 +44,7 @@
     <? require_once(__DIR__ . '/php/menu.php'); ?> 
     <h1> Список всех кассиров </h1>
     <div id="user_list">
-        <input type="text" placeholder="Показанны все кассиры" id="input-search-all-client" oninput="searchClient()">
+        <input type="text" placeholder="Показанны все кассиры" id="input-search-all-client" oninput="searchCashier()">
         <div class="users"> </div>
     </div>
 
@@ -53,7 +53,7 @@
         var re;
         var string;
 
-        function searchClient() 
+        function searchCashier() 
         {
             cashiersSearch = [];
 
