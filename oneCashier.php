@@ -60,6 +60,8 @@
                     <p id="bonuses"> <strong>Логин:</strong> <br> <?php echo $cashierInfo['login']; ?> </p>
                     <hr>
                     <p id="next_writeoff_date"> <strong>Пароль:</strong> <br> <?php echo $cashierInfo['password']; ?> </p>
+
+                    <a href="./php/deleteCashier.php?id_cashier=<?php echo $cashierInfo['id_cashier'] ?>"> Удалить кассира </a>
                 </div>
 
                 <!-- <form id="bonus_payment" action="" method="GET">
