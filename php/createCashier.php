@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if ($_SESSION['cashiersData']['id_cashiers'] != 1)
+    if ($_SESSION['cashiersData']['id_cashier'] != 1)
     {
         header("Location: ../auth.html");
     }
