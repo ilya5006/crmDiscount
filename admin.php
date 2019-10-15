@@ -36,9 +36,9 @@
     </header>
 
     <form action="" method="GET">
-        <input type="text" placeholder="Введите ФИО кассира" name="fio_cashier" id="fio_cashier">
-        <input type="text" placeholder="Введите логин кассира" name="login_cashier" id="login_cashier">
-        <input type="text" placeholder="Введите пароль кассира" name="password_cashier" id="password_cashier">        
+        <input type="text" placeholder="Введите ФИО кассира" name="fio_cashier" id="fio_cashier" pattern="[A-Za-zА-Яа-яЁё-]{2,} [A-Za-zА-Яа-яЁё]{2,} [A-Za-zА-Яа-яЁё]{0,}" required>
+        <input type="text" placeholder="Введите логин кассира" name="login_cashier" id="login_cashier" required>
+        <input type="text" placeholder="Введите пароль кассира" name="password_cashier" id="password_cashier" required>        
         <input type="submit" name="create_cashier" id="create_client" value="Создать кассира">
 
         <a href="./allCashiers.php"> Просмотр всех кассиров </a>
