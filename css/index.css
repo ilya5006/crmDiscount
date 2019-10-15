@@ -46,12 +46,12 @@ a
 }
 
 
-form:not(#search-form, #info)
+form:not(#search-form):not(#new_client):not(#bonus_payment)
 {
 	width: 650px;
 }
 
-form, .wrapper, #info, #input-search-all-client
+form, .wrapper, #info, #input-search-all-client, .log
 {
 	display: flex;
 	align-items: center;
@@ -65,7 +65,7 @@ form, .wrapper, #info, #input-search-all-client
 	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
-.client
+.client, .log
 {
 	display: flex;
 	align-items: center;
@@ -79,6 +79,24 @@ form, .wrapper, #info, #input-search-all-client
 	border: 3px solid transparent;
 	background-color: #FFFFFF;
 	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+#logs
+{
+	width: 100%;
+}
+
+.log
+{
+	flex-flow: row wrap;
+	justify-content: flex-start;
+}
+
+.log p
+{
+	padding: 0px 5px;
+
+	text-align: center;
 }
 
 .client:hover
@@ -337,7 +355,7 @@ header h1, h1
 	}
 }
 
-@media screen and (max-width: 700px)
+@media screen and (max-width: 720px)
 {
 	#menu
 	{
@@ -351,7 +369,7 @@ header h1, h1
 	{
 		margin-top: 0px;
 	}
-	#auth, #info, #bonus_payment, #accrual_of_bonuses, #new_client, #bonus_payment
+	#auth, #info, #bonus_payment, #accrual_of_bonuses, #new_client, #bonus_payment, form:not(#search-form):not(#new_client):not(#bonus_payment)
 	{
 		width: 100%;
 	}
@@ -401,6 +419,27 @@ header h1, h1
 
 		text-align: center;
 	}
+	.wrapper a
+	{
+		font-size: 7vw !important;
+	}
+}
+
+@media screen and (max-width: 575px)
+{
+	.log
+	{
+		flex-flow: column wrap;
+		justify-content: center;
+	}
+	.log p
+	{
+		font-size: 24px;
+	}
+	#error
+	{
+		font-size: 13vw;
+	}
 }
 
 @media screen and (max-width: 475px)
@@ -421,6 +460,10 @@ header h1, h1
 
 @media screen and (max-width: 420px)
 {
+	.log p
+	{
+		font-size: 19px;
+	}
 	input
 	{
 		font-size: 8vw;
