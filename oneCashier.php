@@ -6,6 +6,11 @@
         header("Location: ../auth.html");
     }
 
+    if ($_SESSION['cashiersData']['id_cashier'] != 1)
+    {
+        header("Location: ./index.php");
+    }
+
     $idCashier = $_GET['id_cashier'];
     require_once "./php/db.php";
     
