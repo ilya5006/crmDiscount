@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
-    <? require_once(__DIR__ . '\php\menu.php'); ?> 
+    <? require_once(__DIR__ . '/php/menu.php'); ?>
 
     <div id="info">
         <p> <strong>Процент суммы, оплачиваемый бонусами: </strong> <br> <span id="percent">0</span> </p>   
@@ -35,7 +35,7 @@
 
     <form action="./php/bonusPayment.php" method="GET" id="bonus_payment">
         Введите кол-во бонусов <br>
-        <input id="bonuses_quantity" type="number" placeholder="Введите кол-во бонусов" name="sum" min="1">
+        <input id="bonuses_quantity" type="number" placeholder="Введите кол-во бонусов" name="sum" min="1" max="1000000" required>
         <input type="submit" value="Оплата бонусами">
     </form>
 
@@ -47,7 +47,7 @@
         let clientBonuses = document.querySelector('#client_bonuses');
         let percent = document.querySelector('#percent');
 
-        bonusesQuantity.addEventListener('input', (event) =>
+        bonusesQuantity.addEventListener('input', function (event)
         {
             let maximum;
             if (parseInt(clientBonuses.textContent) > parseInt(maximumBonuses.textContent))

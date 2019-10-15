@@ -30,7 +30,6 @@ body
 	display: flex;
 	align-items: center;
 	flex-flow: column nowrap;
-	justify-content: center;
 
 	background-color: #330000;
 	background-image: url("./../img/background.svg");
@@ -40,18 +39,19 @@ body
 }
 
 a
-{	
-	color: black;
+{
 	text-decoration: none;
+
+	color: black;
 }
 
 
-form:not(#search-form, #info)
+form:not(#search-form):not(#new_client):not(#bonus_payment)
 {
 	width: 650px;
 }
 
-form, .wrapper, #info, #input-search-all-client
+form, .wrapper, #info, #input-search-all-client, .log
 {
 	display: flex;
 	align-items: center;
@@ -65,7 +65,7 @@ form, .wrapper, #info, #input-search-all-client
 	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
-.client
+.client, .log
 {
 	display: flex;
 	align-items: center;
@@ -79,6 +79,24 @@ form, .wrapper, #info, #input-search-all-client
 	border: 3px solid transparent;
 	background-color: #FFFFFF;
 	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+#logs
+{
+	width: 100%;
+}
+
+.log
+{
+	flex-flow: row wrap;
+	justify-content: flex-start;
+}
+
+.log p
+{
+	padding: 0px 5px;
+
+	text-align: center;
 }
 
 .client:hover
@@ -97,15 +115,17 @@ form, .wrapper, #info, #input-search-all-client
 .client__id
 {
 	font-size: 26px;
-	white-space: nowrap;
+
 	min-width: 8%;
 	height: 100%;
+
+	white-space: nowrap;
 }
 
 .client__fio
 {
 	font-size: 23px;
-	text-transform: capitalize;
+
 	align-content: center;
 	flex-grow: 1;
 	justify-content: flex-start;
@@ -113,6 +133,8 @@ form, .wrapper, #info, #input-search-all-client
 	width: 80%;
 	height: 100%;
 	padding-left: 25px;
+
+	text-transform: capitalize;
 }
 
 .class__bonuses
@@ -250,23 +272,29 @@ header h1, h1
 
 #menu
 {
-	width: 100%;
 	display: flex;
 	flex-flow: row wrap;
+
+	width: 100%;
 }
 
 #menu a
 {
-	text-align: center;
-	opacity: 0.5;
 	font-size: 18px;
-	color: white;
+
+	position: relative;
+
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
 	padding: 15px 35px;
+
 	transition: 0.3s all;
-	position: relative;
+	text-align: center;
+
+	opacity: 0.5;
+	color: white;
 }
 
 #logout
@@ -281,15 +309,18 @@ header h1, h1
 
 #menu a::after
 {
-	left: 0;
-	transition: 0.3s all;
 	position: absolute;
 	bottom: 0;
+	left: 0;
+
 	width: 100%;
 	height: 2px;
-	background-color: white;
+
 	content: "";
+	transition: 0.3s all;
 	transform: scale(0);
+
+	background-color: white;
 }
 
 #menu a:hover::after
@@ -299,12 +330,15 @@ header h1, h1
 
 #header_fio
 {
-	color: white;
-	text-align: center;
-	width: 100%;
-	opacity: 0.7;
 	font-size: 20px;
+
+	width: 100%;
 	margin: 15px 0;
+
+	text-align: center;
+
+	opacity: 0.7;
+	color: white;
 }
 
 @media screen and (max-width: 800px)
@@ -321,7 +355,7 @@ header h1, h1
 	}
 }
 
-@media screen and (max-width: 700px)
+@media screen and (max-width: 720px)
 {
 	#menu
 	{
@@ -335,7 +369,7 @@ header h1, h1
 	{
 		margin-top: 0px;
 	}
-	#auth, #info, #bonus_payment, #accrual_of_bonuses, #new_client, #bonus_payment
+	#auth, #info, #bonus_payment, #accrual_of_bonuses, #new_client, #bonus_payment, form:not(#search-form):not(#new_client):not(#bonus_payment)
 	{
 		width: 100%;
 	}
@@ -385,6 +419,27 @@ header h1, h1
 
 		text-align: center;
 	}
+	.wrapper a
+	{
+		font-size: 7vw !important;
+	}
+}
+
+@media screen and (max-width: 575px)
+{
+	.log
+	{
+		flex-flow: column wrap;
+		justify-content: center;
+	}
+	.log p
+	{
+		font-size: 24px;
+	}
+	#error
+	{
+		font-size: 13vw;
+	}
 }
 
 @media screen and (max-width: 475px)
@@ -405,6 +460,10 @@ header h1, h1
 
 @media screen and (max-width: 420px)
 {
+	.log p
+	{
+		font-size: 19px;
+	}
 	input
 	{
 		font-size: 8vw;

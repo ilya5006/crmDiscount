@@ -35,7 +35,7 @@
 </script>
 </head>
 <body>
-    <? require_once(__DIR__ . '\php\menu.php'); ?> 
+    <? require_once(__DIR__ . '/php/menu.php'); ?> 
     <h1> Список всех клиентов </h1>
     <div id="user_list">
         <input type="text" placeholder="Показанны все клиенты" id="input-search-all-client" oninput="searchClient()">
