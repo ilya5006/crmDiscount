@@ -3,7 +3,7 @@
 
     if ($_SESSION['cashiersData']['id_cashier'] != 1)
     {
-        header("Location: ../auth.html");
+        header("Location: ../auth.php");
     }
 
     require_once "./db.php";

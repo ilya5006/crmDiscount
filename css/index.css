@@ -51,7 +51,7 @@ form:not(#search-form):not(#new_client):not(#bonus_payment)
 	width: 650px;
 }
 
-form, .wrapper, #info, #input-search-all-client, .log
+form, .wrapper, #info, #input-search-all-client, .log, #input-search-all-cashier
 {
 	display: flex;
 	align-items: center;
@@ -65,7 +65,7 @@ form, .wrapper, #info, #input-search-all-client, .log
 	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
-.client, .log
+.client, .cashier, .log
 {
 	display: flex;
 	align-items: center;
@@ -99,20 +99,20 @@ form, .wrapper, #info, #input-search-all-client, .log
 	text-align: center;
 }
 
-.client:hover
+.client:hover, .cashier:hover
 {
 	border: 3px solid rgb(230, 78, 98);
 	background-color: rgb(250, 250, 250);
 }
 
-.client__id, .client__fio, .class__bonuses
+.client__id, .client__fio, .class__bonuses, .cashier__id, .cashier__fio, .class__data
 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-.client__id
+.client__id, .cashier__id
 {
 	font-size: 26px;
 
@@ -122,7 +122,7 @@ form, .wrapper, #info, #input-search-all-client, .log
 	white-space: nowrap;
 }
 
-.client__fio
+.client__fio, .cashier__fio
 {
 	font-size: 23px;
 
@@ -137,11 +137,10 @@ form, .wrapper, #info, #input-search-all-client, .log
 	text-transform: capitalize;
 }
 
-.class__bonuses
+.class__bonuses, .class__data
 {
 	font-size: 26px;
 
-	min-width: 8%;
 	height: 100%;
 	padding-left: 25px;
 
@@ -154,7 +153,7 @@ form, .wrapper, #info, #input-search-all-client, .log
 	padding: 25px 55px;
 }
 
-#input-search-all-client
+#input-search-all-client, #input-search-all-cashier
 {
 	position: sticky;
 	top: 0;
@@ -194,7 +193,7 @@ hr
 	padding: 5px 50px;
 }
 
-form input, .wrapper a
+form input, .wrapper a, form a, #info a
 {
 	width: 100%;
 	margin: 15px 0px;
@@ -230,7 +229,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="number"]:foc
 	border: 3px solid rgb(166, 37, 73);
 }
 
-input[type="submit"], .wrapper a
+input[type="submit"], .wrapper a, form a, #info a
 {
 	cursor: pointer;
 
@@ -245,14 +244,19 @@ input[type="submit"], .wrapper a
 	margin: 25px 15px;
 }
 
-input[type="submit"]:hover, .wrapper a:hover
+input[type="submit"]:hover, .wrapper a:hover, form a:hover, #info a:hover
 {
 	background-color: rgb(180, 40, 80);
 }
 
-input[type="submit"]:focus, .wrapper a:focus
+input[type="submit"]:focus, .wrapper a:focus, form a:focus, #info a:focus
 {
 	background-color: rgb(146, 39, 53);;
+}
+
+#info a
+{
+	margin-top: 55px;
 }
 
 header h1, h1
@@ -265,7 +269,7 @@ header h1, h1
 	color: rgb(255, 255, 255);
 }
 
-#auth, #info, #bonus_payment, #accrual_of_bonuses, #new_client, #bonus_payment
+#auth, #info, #bonus_payment, #accrual_of_bonuses, #new_client, #bonus_payment, #new_cashier
 {
 	width: 650px;
 }
@@ -353,6 +357,33 @@ header h1, h1
 	{
 		margin: 25px 0px;
 	}
+	.client, .cashier
+	{
+		flex-flow: row wrap;
+		justify-content: center;
+	}
+	.client__fio, .cashier__fio
+	{
+		justify-content: center;
+		order: -1;
+
+		width: 100%;
+		padding-left: 0px;
+	}
+	.class__bonuses, .class__data
+	{
+		margin-left: auto;
+	}
+	.cashier__id
+	{
+		width: 100%;
+	}
+	.class__data
+	{
+		margin: 0px 15px;
+		margin-left: 0px;
+		padding-left: 0px;
+	}
 }
 
 @media screen and (max-width: 720px)
@@ -369,7 +400,7 @@ header h1, h1
 	{
 		margin-top: 0px;
 	}
-	#auth, #info, #bonus_payment, #accrual_of_bonuses, #new_client, #bonus_payment, form:not(#search-form):not(#new_client):not(#bonus_payment)
+	#auth, #info, #bonus_payment, #accrual_of_bonuses, #new_client, #new_cashier, #bonus_payment, form:not(#search-form):not(#new_client):not(#bonus_payment)
 	{
 		width: 100%;
 	}
@@ -405,15 +436,15 @@ header h1, h1
 	{
 		text-align: center;
 	}
-	.client
+	.client, .cashier
 	{
 		margin-bottom: 5px;
 	}
-	#input-search-all-client
+	#input-search-all-client, #input-search-all-cashier
 	{
 		text-align: center;
 	}
-	.client__fio
+	.client__fio, .cashier__fio
 	{
 		justify-content: center;
 
@@ -448,11 +479,11 @@ header h1, h1
 	{
 		font-size: 5vw;
 	}
-	#bonus_payment input, #accrual_of_bonuses input, #new_client input
+	#bonus_payment input, #accrual_of_bonuses input, #new_client input, #new_cashier input, #new_cashier a
 	{
 		font-size: 5vw;
 	}
-	.client__fio
+	.client__fio, .cashier__fio
 	{
 		font-size: 19px;
 	}
