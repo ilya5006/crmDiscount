@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 07 2019 г., 11:25
+-- Время создания: Окт 15 2019 г., 15:33
 -- Версия сервера: 8.0.15
 -- Версия PHP: 7.3.2
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `authorization` (
-  `id_cashiers` int(11) NOT NULL,
+  `id_cashier` int(11) NOT NULL,
   `fio` varchar(55) NOT NULL,
   `login` varchar(15) NOT NULL,
   `password` varchar(15) NOT NULL
@@ -39,8 +39,9 @@ CREATE TABLE `authorization` (
 -- Дамп данных таблицы `authorization`
 --
 
-INSERT INTO `authorization` (`id_cashiers`, `fio`, `login`, `password`) VALUES
-(1, 'Павленко Флорентина Богдановна', 'admin', 'admin');
+INSERT INTO `authorization` (`id_cashier`, `fio`, `login`, `password`) VALUES
+(1, 'Павленко Флорентина Богдановна', 'admin', 'admin'),
+(2, 'Лобачёва Ефросиния Данииловна', 'cashier1', 'cashier1');
 
 -- --------------------------------------------------------
 
@@ -61,8 +62,8 @@ CREATE TABLE `clients` (
 
 INSERT INTO `clients` (`id_client`, `fio`, `bonuses`, `next_writeoff_date`) VALUES
 (1, 'Иванов Иван Иванович', 10, '2019-11-07'),
-(2, 'Попов Александр Дмитриевич', 2600010, '2019-11-07'),
-(8, 'Манисов Александр Ильич', 10, '2019-11-07'),
+(2, 'Попов Александр Дмитриевич', 2599859, '2019-11-07'),
+(8, 'Манисов Александр Ильич', 34, '2019-11-07'),
 (16, 'Евгений Понасенков', 100, '2019-11-07'),
 (20, 'Имя Фамилия Отчество', 20, '2019-11-07'),
 (21, 'Имя Фамилия Отчество', 20, '2019-11-07'),
@@ -83,7 +84,28 @@ CREATE TABLE `last_writeoff_date` (
 --
 
 INSERT INTO `last_writeoff_date` (`last_writeoff_date`) VALUES
-('2019-10-07');
+('2019-10-15');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `log`
+--
+
+CREATE TABLE `log` (
+  `id_cashiers` int(11) NOT NULL,
+  `types` varchar(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `id_client` int(11) NOT NULL,
+  `bonuses` int(11) NOT NULL,
+  `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Дамп данных таблицы `log`
+--
+
+INSERT INTO `log` (`id_cashiers`, `types`, `id_client`, `bonuses`) VALUES
+(1, 'начислил(а)', 8, 80);
 
 --
 -- Индексы сохранённых таблиц
@@ -93,13 +115,20 @@ INSERT INTO `last_writeoff_date` (`last_writeoff_date`) VALUES
 -- Индексы таблицы `authorization`
 --
 ALTER TABLE `authorization`
-  ADD PRIMARY KEY (`id_cashiers`);
+  ADD PRIMARY KEY (`id_cashier`);
 
 --
 -- Индексы таблицы `clients`
 --
 ALTER TABLE `clients`
   ADD PRIMARY KEY (`id_client`);
+
+--
+-- Индексы таблицы `log`
+--
+ALTER TABLE `log`
+  ADD KEY `id_cashiers` (`id_cashiers`),
+  ADD KEY `id_client` (`id_client`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -109,13 +138,24 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT для таблицы `authorization`
 --
 ALTER TABLE `authorization`
-  MODIFY `id_cashiers` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_cashier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `clients`
 --
 ALTER TABLE `clients`
   MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- Ограничения внешнего ключа сохраненных таблиц
+--
+
+--
+-- Ограничения внешнего ключа таблицы `log`
+--
+ALTER TABLE `log`
+  ADD CONSTRAINT `log_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `clients` (`id_client`),
+  ADD CONSTRAINT `log_ibfk_2` FOREIGN KEY (`id_cashiers`) REFERENCES `authorization` (`id_cashier`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
