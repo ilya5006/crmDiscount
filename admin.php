@@ -40,7 +40,8 @@
         <input type="text" placeholder="Введите логин кассира" name="login_cashier" id="login_cashier">
         <input type="text" placeholder="Введите пароль кассира" name="password_cashier" id="password_cashier">        
         <input type="submit" name="create_cashier" id="create_client" value="Создать кассира">
-        <!-- Позже тут будет возможность удалять кассира -->
+
+        <a href="./allCashiers.php"> Просмотр всех кассиров </a>
     </form>
 </body>
 </html>
