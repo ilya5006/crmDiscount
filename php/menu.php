@@ -4,7 +4,7 @@
     <a href="/createClient.php">Создать клиента</a>
     
     <?php
-    if ($_SESSION['cashiersData']['id_cashiers'] == 1)
+    if ($_SESSION['cashiersData']['id_cashier'] == 1)
     { 
     ?>
         <a href="/admin.php"> Панель администратора </a>

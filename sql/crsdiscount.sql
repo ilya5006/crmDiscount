@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 15 2019 г., 15:33
+-- Время создания: Окт 15 2019 г., 17:50
 -- Версия сервера: 8.0.15
 -- Версия PHP: 7.3.2
 
@@ -41,7 +41,8 @@ CREATE TABLE `authorization` (
 
 INSERT INTO `authorization` (`id_cashier`, `fio`, `login`, `password`) VALUES
 (1, 'Павленко Флорентина Богдановна', 'admin', 'admin'),
-(2, 'Лобачёва Ефросиния Данииловна', 'cashier1', 'cashier1');
+(2, 'Лобачёва Ефросиния Данииловна', 'cashier1', 'cashier1'),
+(3, 'Попова Александра Дмитриевна', 'popova1', 'popova1');
 
 -- --------------------------------------------------------
 
@@ -138,7 +139,7 @@ ALTER TABLE `log`
 -- AUTO_INCREMENT для таблицы `authorization`
 --
 ALTER TABLE `authorization`
-  MODIFY `id_cashier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_cashier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `clients`
