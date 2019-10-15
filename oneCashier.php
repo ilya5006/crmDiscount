@@ -3,7 +3,7 @@
 
     if (!$_SESSION['isAuth'])
     {
-        header("Location: ../auth.html");
+        header("Location: ../auth.php");
     }
 
     if ($_SESSION['cashiersData']['id_cashier'] != 1)
@@ -26,12 +26,12 @@
             </head>
     
             <body style="justify-content: center;">
-                <h1 id="error" stule="margin-top: 0px"> Клиент не найден </h1>
+                <h1 id="error" stule="margin-top: 0px"> Кассир не найден </h1>
                 <div class="wrapper">
                 <a href="./index.php"> Попробовать снова </a>
                 </div>
             </body>
-        <?
+        <?php
         }
         // else
         // {
