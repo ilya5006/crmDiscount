@@ -66,6 +66,8 @@
                     <p id="bonuses"> <strong>Количество бонусов:</strong> <br> <?php echo $clientInfo['bonuses']; ?> </p>
                     <hr>
                     <p id="next_writeoff_date"> <strong>Следующая дата списания бонусов:</strong> <br> <?php echo $clientInfo['next_writeoff_date']; ?> </p>
+                    <hr>
+                    <a href="./php/deleteClient.php?id_client=<?php echo $_SESSION['clientInfo']['id_client']; ?>">Удалить клиента</a>
                 </div>
 
                 <form id="bonus_payment" action="" method="GET">
