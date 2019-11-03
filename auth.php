@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    if (isset($_SESSION['isAuth']))
+    {
+        header("Location: ./index.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>

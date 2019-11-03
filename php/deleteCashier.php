@@ -5,7 +5,7 @@
 
     if (!$_SESSION['isAuth'])
     {
-        header("Location: ../auth.html");
+        header("Location: ../auth.php");
     }
 
     if ($_SESSION['cashiersData']['id_cashier'] != 1)

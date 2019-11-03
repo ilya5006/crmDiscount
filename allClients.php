@@ -3,7 +3,7 @@
 
     if (!$_SESSION['isAuth'])
     {
-        header("Location: auth.html");
+        header("Location: auth.php");
     }
     
     include_once(__DIR__ . '/php/allClientList.php');

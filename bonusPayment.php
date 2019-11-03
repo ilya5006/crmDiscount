@@ -2,7 +2,7 @@
     session_start();
     if (!$_SESSION['isAuth'])
     {
-        header("Location: ../auth.html");
+        header("Location: ../auth.php");
     }
     $sum = $_GET['sum'];
     $maximumBonusesToPayment = floor($sum * 30 / 100);
