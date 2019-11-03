@@ -8,9 +8,9 @@
         header("Location: ../index.php");
     }
 
-    $cashierId = $_GET['id_cashier'];
+    $clientId = $_GET['id_client'];
 
-    Database::queryExecute("DELETE FROM authorization WHERE id_cashier = '$cashierId'");
+    Database::queryExecute("DELETE FROM clients WHERE id_client = '$clientId'");
 
-    header("Location: ../admin.php");
+    header("Location: ../allClients.php");
 ?>
