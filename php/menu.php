@@ -11,5 +11,5 @@
     ?>
 
     <a href="./php/logout.php" id="logout">Выйти</a>
-    <p id="header_fio"> <? echo $_SESSION['cashiersData']['fio']; ?> </p>
+    <p id="header_fio"> <?php echo $_SESSION['cashiersData']['fio']; ?> </p>
 </div>

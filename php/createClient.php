@@ -29,7 +29,7 @@
 
 <body style="justify-content: center;">
     <div id="info">
-    <?
+    <?php
         Database::queryExecute("INSERT INTO clients VALUES (NULL, '$fio', '$bonuses', '$nextWriteoffDate')");
         $clientId = Database::query("SELECT id_client FROM clients ORDER BY id_client DESC")['id_client'];
         echo "<p> <strong> ID клиента: </strong> <br> $clientId  </p> <hr>";

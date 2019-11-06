@@ -19,23 +19,23 @@
     <link rel="stylesheet" href="./css/index.css">
     <script>
         var users = [];
-    <?
+    <?php
         foreach ($allClientData as $data)
         {   
         ?>
-            id = '<? echo $data['id_client']; ?>';
-            fio = '<? echo $data['fio']; ?>';
+            id = '<?php echo $data['id_client']; ?>';
+            fio = '<?php echo $data['fio']; ?>';
             fio = fio.toLowerCase();
-            bonuses = '<? echo $data['bonuses']; ?>';
+            bonuses = '<?php echo $data['bonuses']; ?>';
 
             users.push([id,fio,bonuses]);
-        <?
+        <?php
         }
     ?>
 </script>
 </head>
 <body>
-    <? require_once(__DIR__ . '/php/menu.php'); ?> 
+    <?php require_once(__DIR__ . '/php/menu.php'); ?> 
     <h1> Список всех клиентов </h1>
     <div id="user_list">
         <input type="text" placeholder="Показанны все клиенты" id="input-search-all-client" oninput="searchClient()">
