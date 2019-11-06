@@ -3,7 +3,7 @@
 
     if (!$_SESSION['isAuth'])
     {
-        header("Location: auth.html");
+        header("Location: auth.php");
     }
     
     include_once(__DIR__ . '/php/logShow.php');
@@ -19,10 +19,10 @@
     <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
-    <? require_once(__DIR__ . '/php/menu.php'); ?>
+    <?php require_once(__DIR__ . '/php/menu.php'); ?>
     <h1> Список всех операций </h1>
     <div id="logs">
-    <?
+    <?php
         foreach ($logs as $data)
         {
             echo '<div class="log">';

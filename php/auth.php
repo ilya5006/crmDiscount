@@ -25,7 +25,7 @@
         <body style="justify-content: center;">
             <h1 id="error" stule="margin-top: 0px"> Логин или пароль неверны </h1>
             <div class="wrapper">
-            <a href="./../auth.html"> Попробовать снова </a>
+            <a href="./../auth.php"> Попробовать снова </a>
             </div>
         </body>
         <?php

@@ -3,7 +3,7 @@
 
     if (!$_SESSION['isAuth'])
     {
-        header("Location: ../auth.html");
+        header("Location: ../auth.php");
     }
 
     if ($_SESSION['cashiersData']['id_cashier'] != 1)
@@ -26,12 +26,12 @@
             </head>
     
             <body style="justify-content: center;">
-                <h1 id="error" stule="margin-top: 0px"> Клиент не найден </h1>
+                <h1 id="error" stule="margin-top: 0px"> Кассир не найден </h1>
                 <div class="wrapper">
                 <a href="./index.php"> Попробовать снова </a>
                 </div>
             </body>
-        <?
+        <?php
         }
         // else
         // {
@@ -48,7 +48,7 @@
             </head>
             <body>
                 <header>
-                    <? require_once(__DIR__ . '/php/menu.php'); ?>
+                    <?php require_once(__DIR__ . '/php/menu.php'); ?>
                     <h1>Панель управления</h1>
                 </header>
 
@@ -60,6 +60,8 @@
                     <p id="bonuses"> <strong>Логин:</strong> <br> <?php echo $cashierInfo['login']; ?> </p>
                     <hr>
                     <p id="next_writeoff_date"> <strong>Пароль:</strong> <br> <?php echo $cashierInfo['password']; ?> </p>
+
+                    <a href="./php/deleteCashier.php?id_cashier=<?php echo $cashierInfo['id_cashier'] ?>"> Удалить кассира </a>
                 </div>
 
                 <!-- <form id="bonus_payment" action="" method="GET">

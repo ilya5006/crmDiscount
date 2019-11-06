@@ -2,7 +2,7 @@
 
     if (!$_SESSION['isAuth'])
     {
-        header("Location: ../auth.html");
+        header("Location: ../auth.php");
     }
 
     require_once(__DIR__ . '/db.php');

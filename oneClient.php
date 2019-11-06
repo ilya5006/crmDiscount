@@ -3,7 +3,7 @@
 
     if (!$_SESSION['isAuth'])
     {
-        header("Location: ../auth.html");
+        header("Location: ../auth.php");
     }
     
     if (isset($_GET['accrual']))
@@ -37,7 +37,7 @@
                 <a href="./index.php"> Попробовать снова </a>
                 </div>
             </body>
-        <?
+        <?php
         }
         else
         {
@@ -54,7 +54,7 @@
             </head>
             <body>
                 <header>
-                    <? require_once(__DIR__ . '/php/menu.php'); ?>
+                    <?php require_once(__DIR__ . '/php/menu.php'); ?>
                     <h1>Панель управления</h1>
                 </header>
 
@@ -66,6 +66,8 @@
                     <p id="bonuses"> <strong>Количество бонусов:</strong> <br> <?php echo $clientInfo['bonuses']; ?> </p>
                     <hr>
                     <p id="next_writeoff_date"> <strong>Следующая дата списания бонусов:</strong> <br> <?php echo $clientInfo['next_writeoff_date']; ?> </p>
+                    <hr>
+                    <a href="./php/deleteClient.php?id_client=<?php echo $_SESSION['clientInfo']['id_client']; ?>">Удалить клиента</a>
                 </div>
 
                 <form id="bonus_payment" action="" method="GET">

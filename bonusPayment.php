@@ -2,7 +2,7 @@
     session_start();
     if (!$_SESSION['isAuth'])
     {
-        header("Location: ../auth.html");
+        header("Location: ../auth.php");
     }
     $sum = $_GET['sum'];
     $maximumBonusesToPayment = floor($sum * 30 / 100);
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
-    <? require_once(__DIR__ . '/php/menu.php'); ?>
+    <?php require_once(__DIR__ . '/php/menu.php'); ?>
 
     <div id="info">
         <p> <strong>Процент суммы, оплачиваемый бонусами: </strong> <br> <span id="percent">0</span> </p>   

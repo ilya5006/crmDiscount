@@ -3,7 +3,7 @@
 
     if (!$_SESSION['isAuth'])
     {
-        header("Location: ./auth.html");
+        header("Location: ./auth.php");
     }
 
     require_once "./php/db.php";
@@ -83,7 +83,7 @@
 </head>
 <body>
     <header>
-        <? require_once(__DIR__ . '/php/menu.php'); ?>
+        <?php require_once(__DIR__ . '/php/menu.php'); ?>
         <h1>Панель управления</h1>
     </header>
     <div id="main">

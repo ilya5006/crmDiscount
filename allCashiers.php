@@ -3,7 +3,7 @@
 
     if (!$_SESSION['isAuth'])
     {
-        header("Location: auth.html");
+        header("Location: auth.php");
     }
     
     if ($_SESSION['cashiersData']['id_cashier'] != 1)
@@ -28,11 +28,11 @@
         foreach ($allCashiersData as $data)
         {   
         ?>
-            id = '<? echo $data['id_cashier']; ?>';
-            fio = '<? echo $data['fio']; ?>';
+            id = '<?php echo $data['id_cashier']; ?>';
+            fio = '<?php echo $data['fio']; ?>';
             fio = fio.toLowerCase();
-            login = '<? echo $data['login']; ?>';
-            password = '<? echo $data['password']; ?>';
+            login = '<?php echo $data['login']; ?>';
+            password = '<?php echo $data['password']; ?>';
 
             cashiers.push([id, fio, login, password]);
         <?php
@@ -41,10 +41,10 @@
     </script>
 </head>
 <body>
-    <? require_once(__DIR__ . '/php/menu.php'); ?> 
+    <?php require_once(__DIR__ . '/php/menu.php'); ?> 
     <h1> Список всех кассиров </h1>
     <div id="user_list">
-        <input type="text" placeholder="Показанны все кассиры" id="input-search-all-client" oninput="searchClient()">
+        <input type="text" placeholder="Показанны все кассиры" id="input-search-all-cashier" oninput="searchCashier()">
         <div class="users"> </div>
     </div>
 
@@ -53,16 +53,16 @@
         var re;
         var string;
 
-        function searchClient() 
+        function searchCashier() 
         {
             cashiersSearch = [];
 
-            if (document.querySelector("#input-search-all-client").value != '') 
+            if (document.querySelector("#input-search-all-cashier").value != '') 
             {
                 cashiers.forEach(function(element) 
                 {
                     string = element[1];
-                    re = document.querySelector("#input-search-all-client").value.toLowerCase();
+                    re = document.querySelector("#input-search-all-cashier").value.toLowerCase();
                     
                     if (string.indexOf(re) != -1) 
                     {
@@ -82,7 +82,7 @@
             document.querySelector(".users").innerHTML = "";
             cashiers.forEach(function(data) 
             {
-                info = '<a href="oneCashier.php?id_cashier='+data[0]+ '" class="client"> <p class="client__id"> ID: ' + data[0] + '</p> <p class="client__fio">' + data[1] + '</p> <p class=class__bonuses>' + data[2] + '</p>'  + '<p class=class__bonuses>' + data[3] + '</p> </a>';
+                info = '<a href="oneCashier.php?id_cashier='+data[0]+ '" class="cashier"> <p class="cashier__id"> ID: ' + data[0] + '</p> <p class="cashier__fio">' + data[1] + '</p> <p class=class__data>' + data[2] + '</p>'  + '<p class=class__data>' + data[3] + '</p> </a>';
                 document.querySelector(".users").innerHTML += info;
             });
         }
@@ -92,7 +92,7 @@
             document.querySelector(".users").innerHTML = "";
             cashiersSearch.forEach(function(data) 
             {
-                info = '<a href="oneCashier.php?id_cashier='+data[0]+ '" class="client"> <p class="client__id"> ID: ' + data[0] + '</p> <p class="client__fio">' + data[1] + '</p> <p class=class__bonuses>' + data[2] + '</p>' + '<p class=class__bonuses>' + data[3] + '</p> </a>';
+                info = '<a href="oneCashier.php?id_cashier='+data[0]+ '" class="cashier"> <p class="cashier__id"> ID: ' + data[0] + '</p> <p class="cashier__fio">' + data[1] + '</p> <p class=class__data>' + data[2] + '</p>' + '<p class=class__data>' + data[3] + '</p> </a>';
                 document.querySelector(".users").innerHTML += info;
             });
         }
