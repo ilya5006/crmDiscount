@@ -48,7 +48,7 @@
             </head>
             <body>
                 <header>
-                    <? require_once(__DIR__ . '/php/menu.php'); ?>
+                    <?php require_once(__DIR__ . '/php/menu.php'); ?>
                     <h1>Панель управления</h1>
                 </header>
 

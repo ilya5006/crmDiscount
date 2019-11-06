@@ -28,11 +28,11 @@
         foreach ($allCashiersData as $data)
         {   
         ?>
-            id = '<? echo $data['id_cashier']; ?>';
-            fio = '<? echo $data['fio']; ?>';
+            id = '<?php echo $data['id_cashier']; ?>';
+            fio = '<?php echo $data['fio']; ?>';
             fio = fio.toLowerCase();
-            login = '<? echo $data['login']; ?>';
-            password = '<? echo $data['password']; ?>';
+            login = '<?php echo $data['login']; ?>';
+            password = '<?php echo $data['password']; ?>';
 
             cashiers.push([id, fio, login, password]);
         <?php
@@ -41,7 +41,7 @@
     </script>
 </head>
 <body>
-    <? require_once(__DIR__ . '/php/menu.php'); ?> 
+    <?php require_once(__DIR__ . '/php/menu.php'); ?> 
     <h1> Список всех кассиров </h1>
     <div id="user_list">
         <input type="text" placeholder="Показанны все кассиры" id="input-search-all-cashier" oninput="searchCashier()">
